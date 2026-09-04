@@ -1,0 +1,2530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Paula & Agustín — 12 de Diciembre de 2026</title>
+  <meta name="description" content="Acompáñanos a celebrar nuestra boda el 12 de diciembre de 2026 en Cullera, Valencia.">
+  <meta property="og:title" content="Paula & Agustín — Nos casamos">
+  <meta property="og:description" content="Acompáñanos a celebrar nuestra boda el 12 de diciembre de 2026 en el Santuario Virgen del Castillo, Cullera.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#ab2a2a">
+
+  <!-- Tipografías elegantes Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       VARIABLES Y PALETA DE COLORES PERSONALIZADA
+       Verde: #425442 | Rojo: #ab2a2a | Dorado: #b99f56
+       ========================================================================== */
+    :root {
+      --color-green: #425442;
+      --color-green-deep: #273427;
+      --color-green-light: #5f755f;
+      --color-red: #ab2a2a;
+      --color-red-deep: #611010;
+      --color-gold: #b99f56;
+      --color-gold-light: #dfc888;
+      --color-cream: #FBF7F0;
+      --color-cream-alt: #F3ECE0;
+      --color-text: #28221D;
+
+      --font-calligraphy: 'Alex Brush', cursive;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-script: 'Cormorant Garamond', Garamond, serif;
+      --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* Reset y normalización cross-browser */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      background-color: var(--color-cream);
+      color: var(--color-text);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      touch-action: manipulation;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* FIX CHECKBOXES: Solo aplicar appearance: none a campos de texto */
+    input:not([type="checkbox"]):not([type="radio"]), select, textarea {
+      font-family: inherit;
+      font-size: 16px;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 8px;
+    }
+
+    input[type="checkbox"] {
+      -webkit-appearance: checkbox;
+      appearance: checkbox;
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+      accent-color: var(--color-red);
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       EFECTO NIEVE FLUIDO Y PERMANENTE
+       ========================================================================== */
+    #global-snow {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .g-flake {
+      position: absolute;
+      top: -20px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.85);
+      pointer-events: none;
+      will-change: transform;
+      animation: gSnowFall linear infinite;
+    }
+
+    @keyframes gSnowFall {
+      0% {
+        transform: translate3d(0, -20px, 0);
+        opacity: 0;
+      }
+      8% { opacity: 0.95; }
+      92% { opacity: 0.95; }
+      100% {
+        transform: translate3d(var(--drift, 25px), 105vh, 0);
+        opacity: 0.15;
+      }
+    }
+
+    /* ==========================================================================
+       PANTALLA DE APERTURA: SOBRE CON TARJETÓN EMERGENTE
+       ========================================================================== */
+    #envelope-screen {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible; /* no recortar la solapa al abrirse */
+      padding: max(5vh, 40px) 16px max(4vh, 30px);
+      background: radial-gradient(circle at 50% 30%, #344734 0%, #1c271c 85%);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    #envelope-screen::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: 
+        radial-gradient(circle, rgba(223, 200, 136, 0.35) 1.5px, transparent 2px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1.5px);
+      background-size: 55px 55px, 80px 80px;
+      background-position: 0 0, 30px 40px;
+      opacity: 0.7;
+    }
+
+    /* Cuando se desliza para ver la web, el sobre se desvanece suavemente */
+    #envelope-screen.dismissed {
+      display: none !important;
+    }
+
+    .envelope-wrap {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 520px;
+      padding-top: max(4vh, 25px); /* margen superior para que la solapa abierta nunca se corte */
+      padding-bottom: 2vh;
+    }
+
+    .envelope-hint-top {
+      font-family: var(--font-calligraphy);
+      font-size: 1.8rem;
+      color: var(--color-gold-light);
+      margin-bottom: 2vh;
+      text-align: center;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      transition: opacity 0.4s ease;
+    }
+
+    /* ---- CONTENEDOR DEL SOBRE ---- */
+    .envelope-container {
+      position: relative;
+      width: min(94vw, 480px);
+      flex-shrink: 0;
+      border-radius: 8px;
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.75);
+      aspect-ratio: 1490 / 1060;
+      overflow: visible; /* la solapa sale hacia arriba sin cortarse */
+      perspective: 1200px;
+    }
+
+    /* Imagen del sobre base acolchado */
+    .envelope-container img.envelope-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 8px;
+    }
+
+    /* ---- SOLAPA DEL SOBRE CON TEXTURAS REALES ---- */
+    .envelope-flap {
+      position: absolute;
+      top: 6.6%; /* línea exacta donde se pliega la solapa en sobre-cerrado.png */
+      left: 0;
+      width: 100%;
+      height: 44.8%; /* proporción exacta de la solapa triangular */
+      transform-origin: top center;
+      transform-style: preserve-3d;
+      transform: rotateX(0deg);
+      transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 20; /* por encima del sobre base, pero el sello está encima */
+      pointer-events: none;
+    }
+
+    .envelope-container.flap-open .envelope-flap {
+      transform: rotateX(-180deg);
+      opacity: 0;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease 0.2s;
+      z-index: 5;
+    }
+
+    .envelope-flap-face {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .envelope-flap-front img,
+    .envelope-flap-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      display: block;
+    }
+
+    .envelope-flap-back {
+      transform: rotateY(180deg) rotateZ(180deg);
+      filter: drop-shadow(0 -4px 10px rgba(0,0,0,0.35));
+    }
+
+    /* ---- BOTÓN DEL SELLO (SIEMPRE POR ENCIMA DE LA SOLAPA CERRADA) ---- */
+    .wax-seal-btn {
+      position: absolute;
+      left: 50%;
+      top: 55%;
+      transform: translate3d(-50%, -50%, 0);
+      -webkit-transform: translate3d(-50%, -50%, 0);
+      z-index: 35; /* mayor que la solapa (.envelope-flap z-index: 20) */
+      width: min(28vw, 130px);
+      height: min(28vw, 130px);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #f4e1ad, var(--color-gold) 65%, #7a5f20 100%);
+      border: 3.5px solid var(--color-gold-light);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6), 0 0 0 6px rgba(185, 159, 86, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      touch-action: manipulation;
+      animation: pulseSeal 2.4s ease-in-out infinite;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+    }
+
+    .wax-seal-btn * { pointer-events: none; }
+
+    .wax-seal-btn img {
+      width: 88%;
+      height: 88%;
+      object-fit: contain;
+      border-radius: 50%;
+      background: #faf8f5;
+      padding: 3px;
+    }
+
+    @keyframes pulseSeal {
+      0%, 100% { transform: translate3d(-50%, -50%, 0) scale(1); }
+      50% { transform: translate3d(-50%, -50%, 0) scale(1.07); }
+    }
+
+    /* Cuando el sobre se abre, el sello desaparece con destellos */
+    .envelope-container.tarjeton-active .wax-seal-btn {
+      opacity: 0;
+      transform: translate3d(-50%, -50%, 0) scale(0);
+      pointer-events: none;
+      animation: none;
+    }
+
+    /* ---- TARJETÓN EMERGENTE (PÁG 3) ---- */
+    .envelope-tarjeton-popup {
+      position: absolute;
+      left: 3%;
+      right: 3%;
+      top: 6%;
+      z-index: 25;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(70px) scale(0.92);
+      transition: opacity 0.75s cubic-bezier(0.19, 1, 0.22, 1), transform 0.75s cubic-bezier(0.19, 1, 0.22, 1);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #FFFFFF;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+    }
+
+    .envelope-container.tarjeton-active .envelope-tarjeton-popup {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(-8%) scale(1); /* emerge un poco hacia arriba */
+    }
+
+    .envelope-tarjeton-popup img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ---- SCROLL HINT: DESLIZA PARA CONTINUAR ---- */
+    .envelope-scroll-hint {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      animation: bounceArrow 1.6s ease-in-out infinite;
+      color: var(--color-gold-light);
+      text-align: center;
+      cursor: pointer;
+    }
+
+    #envelope-screen.opened .envelope-scroll-hint {
+      display: flex;
+    }
+
+    .envelope-scroll-hint span:first-child {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      background: rgba(30, 45, 30, 0.85);
+      backdrop-filter: blur(6px);
+      border-radius: 999px;
+      padding: 0.45rem 1.3rem;
+      border: 1.5px solid var(--color-gold);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+      color: var(--color-gold-light);
+    }
+
+    .envelope-scroll-hint span:last-child {
+      font-size: 1.6rem;
+      color: var(--color-gold-light);
+    }
+
+    .open-hint {
+      margin-top: 2.5vh;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: var(--color-gold-light);
+      animation: hintPulse 2s ease-in-out infinite;
+      text-align: center;
+    }
+
+    @keyframes hintPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* Destellos */
+    #sparks-container {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 30;
+    }
+
+    .spark {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--color-gold-light);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .spark.burst {
+      animation: sparkBurst 0.95s ease-out forwards;
+    }
+
+    @keyframes sparkBurst {
+      0% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(var(--dx), var(--dy), 0) scale(0.2);
+      }
+    }
+
+    /* ==========================================================================
+       CONTENIDO PRINCIPAL
+       ========================================================================== */
+    #main-content {
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section {
+      position: relative;
+      overflow: hidden;
+      padding: 5.5rem 1.5rem 4.5rem;
+    }
+
+    .section.cream {
+      background-color: var(--color-cream);
+      background-image: radial-gradient(circle at 12% 18%, rgba(171, 42, 42, 0.05) 0 2px, transparent 3px),
+                        radial-gradient(circle at 88% 75%, rgba(66, 84, 66, 0.06) 0 2px, transparent 3px);
+      background-size: 40px 40px;
+    }
+
+    /* FONDOS VERDES CON DEGRADADO */
+    .section.green-gradient {
+      background: radial-gradient(circle at 25% 20%, rgba(185, 159, 86, 0.22), transparent 40%),
+                  linear-gradient(155deg, var(--color-green) 0%, var(--color-green-deep) 100%);
+      color: var(--color-cream);
+    }
+
+    /* FONDOS ROJOS / GRANATES CON DEGRADADO */
+    .section.red-gradient {
+      background: radial-gradient(circle at 80% 25%, rgba(223, 200, 136, 0.25), transparent 45%),
+                  linear-gradient(155deg, #a12424 0%, var(--color-red-deep) 100%);
+      color: var(--color-cream);
+    }
+
+    .container-sm {
+      max-width: 440px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Separadores */
+    .pearl-divider {
+      text-align: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.5em;
+      color: var(--color-gold);
+      opacity: 0.75;
+      margin: 1.5rem 0;
+      user-select: none;
+    }
+
+    .festive-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin: 0.5rem auto 1.8rem;
+      color: var(--color-gold);
+      font-size: 0.95rem;
+    }
+
+    .festive-divider .line {
+      width: 40px;
+      height: 1.5px;
+      background: var(--color-gold);
+      opacity: 0.65;
+    }
+
+    /* ESTILO TIPOGRÁFICO DE LA PÁGINA 3 */
+    .section-kicker {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--color-red);
+      text-align: center;
+      margin: 0 0 0.5rem;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .section.green-gradient .section-kicker,
+    .section.red-gradient .section-kicker {
+      color: var(--color-gold-light);
+    }
+
+    .formal-body-text {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.06rem;
+      line-height: 1.75;
+      color: var(--color-text);
+      text-align: center;
+    }
+
+    .section.green-gradient .formal-body-text,
+    .section.red-gradient .formal-body-text {
+      color: var(--color-cream);
+    }
+
+    /* GUIRNALDA DE PINO Y PIÑAS (PÁG 7) - TRANSPARENTE */
+    .garland-pine-top {
+      max-width: 380px;
+      margin: 0 auto 1.2rem;
+    }
+    .garland-pine-top img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.06));
+    }
+
+    /* GUIRNALDA DE PINO MINI (PARA SECCIÓN DE HOTELES) */
+    .garland-pine-mini {
+      max-width: 175px;
+      margin: 1.2rem auto 0.6rem;
+    }
+    .garland-pine-mini img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.06));
+    }
+
+    /* GUIRNALDA BOLAS FIESTA (PÁG 10) - TRANSPARENTE */
+    .garland-party-balls {
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto 1rem;
+    }
+    .garland-party-balls img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* ==========================================================================
+       HERO (PORTADA CON FOTO REAL - PÁG 5) Y ADORNO DE ESQUINA (PÁG 16)
+       ========================================================================== */
+    .hero {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5.5rem 1.5rem 4rem;
+      background: var(--color-cream);
+      position: relative;
+    }
+
+    /* Adorno en la esquina superior izquierda (Pág. 16) */
+    .hero-corner-decor {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: min(35vw, 170px);
+      z-index: 10;
+      pointer-events: none;
+    }
+    .hero-corner-decor img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.1));
+    }
+
+    .hero-kicker {
+      font-family: var(--font-sans);
+      color: var(--color-red);
+      font-size: 0.95rem;
+      letter-spacing: 0.22em;
+      font-weight: 700;
+      font-style: italic;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-calligraphy);
+      font-size: clamp(3.2rem, 11vw, 4.6rem);
+      color: var(--color-green);
+      line-height: 1.1;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-photo-wrap {
+      width: 100%;
+      max-width: 440px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+      border: 3px solid var(--color-gold);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-photo-wrap img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-date {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--color-red);
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-location {
+      font-family: var(--font-sans);
+      font-size: 0.86rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-green);
+      font-weight: 700;
+    }
+
+    @keyframes bounceArrow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(7px); }
+    }
+
+    /* ==========================================================================
+       MENSAJE DE BIENVENIDA Y CUENTA ATRÁS (FONDO VERDE CON DEGRADADO)
+       ========================================================================== */
+    .welcome-text {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 1.12rem;
+      line-height: 1.75;
+      text-align: center;
+      max-width: 420px;
+      margin: 0 auto 2.4rem;
+      color: var(--color-cream);
+    }
+
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 0.45rem;
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
+      padding: 0 0.5rem;
+    }
+
+    .countdown-box {
+      background: rgba(24, 34, 24, 0.85);
+      border-radius: 8px;
+      border: 1.5px solid var(--color-gold);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      padding: 0.75rem 0.35rem;
+      min-width: 0;
+      text-align: center;
+      flex: 1;
+    }
+
+    .countdown-num {
+      font-family: var(--font-serif);
+      font-size: clamp(1.3rem, 5.5vw, 1.85rem);
+      font-weight: 700;
+      color: #FFFFFF;
+      display: block;
+      line-height: 1.1;
+    }
+
+    .countdown-label {
+      font-family: var(--font-sans);
+      font-size: clamp(0.52rem, 2vw, 0.62rem);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-gold-light);
+      margin-top: 0.25rem;
+      display: block;
+    }
+
+
+    /* ==========================================================================
+       DETALLES (CEREMONIA Y CELEBRACIÓN)
+       ========================================================================== */
+    .venue-card {
+      background: var(--color-cream);
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      border: 2px solid var(--color-gold);
+      overflow: hidden;
+      margin-bottom: 2.2rem;
+      text-align: center;
+    }
+
+    .venue-ribbon-top {
+      height: 8px;
+      background: repeating-linear-gradient(45deg, var(--color-red) 0 12px, var(--color-green) 12px 24px, var(--color-gold) 24px 30px);
+    }
+
+    .venue-body {
+      padding: 1.8rem 1.4rem;
+    }
+
+    .venue-kicker {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: var(--color-red);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .venue-name {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      color: var(--color-green);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .venue-img-wrap {
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      border: 1px solid rgba(185, 159, 86, 0.35);
+    }
+
+    .venue-img-wrap img {
+      width: 100%;
+      height: auto;
+    }
+
+    .venue-info {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--color-text);
+      margin-bottom: 0.35rem;
+    }
+
+    .btn-maps {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 1.2rem;
+      padding: 0.75rem 2rem;
+      border-radius: 999px;
+      background: var(--color-green);
+      color: var(--color-cream);
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      box-shadow: 0 4px 14px rgba(66, 84, 66, 0.3);
+      transition: opacity 0.2s;
+    }
+
+    .btn-maps:hover { opacity: 0.9; }
+
+    /* ==========================================================================
+       TRASLADOS (FONDO ROJO/GRANATE CON DEGRADADO)
+       ========================================================================== */
+    .santa-wrap {
+      max-width: 320px;
+      margin: 0 auto 0.8rem;
+    }
+    .santa-wrap img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.35));
+    }
+
+    .bus-illustration {
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1.6rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      border: 2px solid var(--color-gold-light);
+      background: #FFFFFF;
+    }
+
+    .timeline-card {
+      background: rgba(45, 10, 10, 0.75);
+      color: var(--color-cream);
+      border-radius: 12px;
+      padding: 1.6rem 1.2rem;
+      border: 1.5px solid var(--color-gold);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      backdrop-filter: blur(4px);
+    }
+
+    .timeline-title {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--color-gold-light);
+      margin-bottom: 1.4rem;
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+
+    .route-block { margin-bottom: 1.8rem; }
+    .route-block:last-child { margin-bottom: 0; }
+
+    .route-line {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0 0.5rem;
+    }
+
+    .route-line::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 10%;
+      right: 10%;
+      height: 3px;
+      background: var(--color-gold-light);
+      z-index: 1;
+      opacity: 0.8;
+    }
+
+    .route-stop {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+    }
+
+    .route-time {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--color-gold-light);
+      margin-bottom: 0.35rem;
+    }
+
+    .route-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px var(--color-red);
+      margin-bottom: 0.45rem;
+    }
+
+    .route-name {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: var(--color-cream);
+      line-height: 1.2;
+    }
+
+    /* ==========================================================================
+       DRESS CODE
+       ========================================================================== */
+    .dresscode-box {
+      background: var(--color-cream);
+      border-radius: 12px;
+      border: 2px solid var(--color-gold);
+      padding: 2.2rem 1.6rem 1.8rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .dresscode-title {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--color-gold);
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .dresscode-message {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--color-text);
+      line-height: 1.65;
+      margin-bottom: 1.8rem;
+    }
+
+    .guests-illustration {
+      margin-top: 1.2rem;
+    }
+    .guests-illustration img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.08));
+    }
+
+    /* ==========================================================================
+       FORMULARIO "¿NOS ACOMPAÑAS?" (FONDO CLARO/CREAM PARA QUE EL DIBUJO POPPE)
+       ========================================================================== */
+    .rsvp-header-img {
+      width: min(72%, 250px);
+      margin: 0 auto 0.8rem;
+    }
+    .rsvp-header-img img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.1));
+    }
+
+    .rsvp-title-big {
+      font-family: var(--font-serif);
+      font-size: 2.45rem;
+      text-align: center;
+      color: var(--color-green-deep);
+      margin-bottom: 0.4rem;
+    }
+
+    .rsvp-box {
+      background: #FFFFFF;
+      border-radius: 14px;
+      border: 2.5px solid var(--color-gold);
+      box-shadow: 0 14px 38px rgba(0,0,0,0.12);
+      padding: 2rem 1.6rem;
+      margin-top: 1.8rem;
+      color: var(--color-text);
+    }
+
+    .attend-toggle {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .attend-btn {
+      flex: 1;
+      padding: 0.95rem;
+      border-radius: 999px;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      border: 2px solid var(--color-green);
+      background: transparent;
+      color: var(--color-green);
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+
+    .attend-btn.active {
+      background: var(--color-green);
+      color: var(--color-cream);
+    }
+
+    .rsvp-fields {
+      display: none;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-top: 1.4rem;
+    }
+
+    .rsvp-fields.visible { display: flex; }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      width: 100%;
+    }
+
+    .form-group label {
+      display: block !important;
+      font-family: var(--font-sans) !important;
+      font-size: 0.82rem !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.08em !important;
+      color: #273427 !important;
+      font-weight: 700 !important;
+    }
+
+    .input-field {
+      width: 100%;
+      border: 1.5px solid rgba(40, 34, 29, 0.3);
+      border-radius: 8px;
+      padding: 0.8rem 0.9rem;
+      background: var(--color-cream);
+      color: #201A15;
+      font-size: 16px;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--color-red);
+      box-shadow: 0 0 0 2px rgba(171, 42, 42, 0.2);
+      background: #FFFFFF;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+
+    .only-yes {
+      display: none;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .rsvp-fields[data-attendance="yes"] .only-yes { display: flex; }
+
+    .transport-fieldset {
+      border: 1.5px solid var(--color-gold);
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      background: var(--color-cream-alt);
+    }
+
+    .transport-fieldset legend {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #273427;
+      padding: 0 0.4rem;
+      font-weight: 700;
+    }
+
+    .check-option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--color-text);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .submit-btn {
+      margin-top: 0.6rem;
+      padding: 1rem;
+      border-radius: 999px;
+      background: var(--color-red);
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+      font-size: 0.96rem;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(171, 42, 42, 0.35);
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .submit-btn:hover { transform: scale(1.02); }
+
+    .thanks-box {
+      text-align: center;
+      padding: 1.6rem 0;
+      display: none;
+    }
+    .thanks-box.visible { display: block; }
+
+    .thanks-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .thanks-title {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      color: var(--color-green);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .btn-return-envelope {
+      margin-top: 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.9rem;
+      border-radius: 999px;
+      background: var(--color-green);
+      color: var(--color-cream);
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(66, 84, 66, 0.3);
+    }
+
+    /* ==========================================================================
+       ¿DÓNDE ALOJARSE? (CON GUIRNALDA DE PINO MINI EN VEZ DE ACEBO)
+       ========================================================================== */
+    .accommodation-section {
+      background-color: var(--color-cream);
+      padding: 5rem 1.5rem;
+      position: relative;
+    }
+
+    .moon-header-wrap {
+      display: flex;
+      justify-content: flex-end;
+      max-width: 440px;
+      margin: 0 auto -1.5rem;
+    }
+    .moon-header-wrap img {
+      width: 78px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
+    }
+
+    .hotel-area-block {
+      margin-bottom: 2.2rem;
+    }
+    .hotel-area-block:last-child { margin-bottom: 0; }
+
+    .hotel-city-title {
+      font-family: var(--font-calligraphy);
+      font-size: 2rem;
+      color: var(--color-green-deep);
+      margin-bottom: 1rem;
+      text-align: center;
+      letter-spacing: 0.02em;
+      font-weight: 400;
+    }
+
+    .hotel-cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .hotel-card-item {
+      background: #FFFFFF;
+      border-radius: 10px;
+      padding: 1.15rem 1.35rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      border: 1.5px solid rgba(185, 159, 86, 0.35);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hotel-info-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      text-align: left;
+    }
+
+    .hotel-name {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--color-text);
+      font-weight: 700;
+    }
+
+    .hotel-location {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 0.8rem;
+      color: rgba(40, 34, 29, 0.65);
+    }
+
+    .btn-hotel-map {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.5rem 1.15rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--color-red);
+      color: var(--color-red);
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .btn-hotel-map:hover {
+      background: var(--color-red);
+      color: #FFFFFF;
+    }
+
+    /* ==========================================================================
+       LISTA DE BODAS (FONDO ROJO/GRANATE CON DEGRADADO)
+       ========================================================================== */
+    .gift-container {
+      background: rgba(20, 34, 20, 0.80);
+      border-radius: 14px;
+      border: 2.5px solid var(--color-gold);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+      padding: 2.4rem 1.6rem;
+      text-align: center;
+      position: relative;
+      color: var(--color-cream);
+      backdrop-filter: blur(4px);
+    }
+
+    .gift-bow {
+      width: 100%;
+      max-width: 360px;
+      margin: -1.4rem auto 1.2rem;
+    }
+    .gift-bow img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.5));
+    }
+
+    .gift-intro {
+      font-family: var(--font-calligraphy);
+      font-size: 1.9rem;
+      color: var(--color-gold-light);
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .gift-verse {
+      font-family: var(--font-calligraphy);
+      font-size: 1.75rem;
+      line-height: 1.7;
+      color: var(--color-cream);
+      margin-bottom: 1.8rem;
+    }
+
+    .gift-iban-box {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      color: var(--color-gold-light);
+      background: rgba(0, 0, 0, 0.35);
+      padding: 0.85rem 1.4rem;
+      border-radius: 8px;
+      border: 2px solid var(--color-gold);
+      font-weight: 700;
+      word-break: break-all;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    }
+
+    /* ==========================================================================
+       PREGUNTAS FRECUENTES (FAQ)
+       ========================================================================== */
+    .faq-card {
+      background: var(--color-cream);
+      border-radius: 10px;
+      border: 1.5px solid var(--color-gold);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      padding: 0 1.4rem;
+    }
+
+    .faq-item { border-bottom: 1px dotted var(--color-gold); }
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.15rem 0;
+      text-align: left;
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--color-green);
+      font-weight: 600;
+    }
+
+    .faq-plus {
+      color: var(--color-red);
+      font-size: 1.3rem;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      margin-left: 0.75rem;
+    }
+
+    .faq-item.open .faq-plus { transform: rotate(45deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .faq-item.open .faq-answer { max-height: 300px; }
+
+    .faq-answer p {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: rgba(40, 34, 29, 0.85);
+      padding-bottom: 1.2rem;
+    }
+
+    /* ==========================================================================
+       BANNER LEMA FINAL (FONDO ROJO/GRANATE CON DEGRADADO - PÁG 15)
+       ========================================================================== */
+    .quote-banner {
+      background: radial-gradient(circle at 50% 30%, rgba(223, 200, 136, 0.28), transparent 50%),
+                  linear-gradient(150deg, #b02828 0%, #590f0f 100%);
+      color: #FFFFFF;
+      padding: 5.5rem 1.8rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .quote-box-inner {
+      max-width: 440px;
+      margin: 0 auto;
+      border: 3.5px solid #FFFFFF;
+      border-radius: 28px;
+      padding: 3.2rem 1.6rem;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    }
+
+    .quote-main-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.1rem, 7.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.25;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #182218;
+      color: var(--color-cream);
+      text-align: center;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    .footer-logo-wrap {
+      width: 85px;
+      height: 85px;
+      margin: 0 auto 1.2rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2.5px solid var(--color-gold);
+    }
+
+    .footer-names {
+      font-family: var(--font-calligraphy);
+      font-size: 2.4rem;
+      color: var(--color-gold-light);
+      margin-bottom: 0.4rem;
+    }
+
+    /* MÚSICA Y NAVEGACIÓN FLOTANTE */
+    #music-btn {
+      position: fixed;
+      z-index: 60;
+      bottom: 5.5rem;
+      right: 1.2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--color-cream);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border: 2.5px solid var(--color-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    #music-btn .ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid var(--color-red);
+      opacity: 0;
+    }
+
+    #music-btn.playing .ring {
+      animation: ringPulse 1.6s ease-out infinite;
+    }
+
+    @keyframes ringPulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.7); opacity: 0; }
+    }
+
+    #floating-nav {
+      position: fixed;
+      left: 50%;
+      bottom: 1rem;
+      transform: translateX(-50%);
+      z-index: 60;
+      width: 92%;
+      max-width: 400px;
+      display: none;
+    }
+
+    #floating-nav.visible { display: block; }
+
+    #floating-nav ul {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+      padding: 0.5rem;
+      background: var(--color-green-deep);
+      border-radius: 999px;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+      border: 2px solid var(--color-gold);
+    }
+
+    #floating-nav button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+      padding: 0.35rem 0.45rem;
+      border-radius: 999px;
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      color: rgba(251, 247, 240, 0.65);
+      font-weight: 600;
+    }
+
+    #floating-nav button.active { color: var(--color-gold-light); }
+    #floating-nav button .ic { font-size: 1.05rem; }
+  </style>
+</head>
+<body>
+
+  <!-- NIEVE PERMANENTE -->
+  <div id="global-snow" aria-hidden="true"></div>
+
+  <!-- ==========================================================================
+       PANTALLA DE APERTURA: SOBRE DE BODA CON TARJETÓN EMERGENTE (PÁG 3)
+       ========================================================================== -->
+  <div id="envelope-screen">
+    <div id="sparks-container" aria-hidden="true"></div>
+
+    <div class="envelope-wrap">
+      <p class="envelope-hint-top" id="guest-tag">Una invitación muy especial</p>
+
+      <div class="envelope-container" id="envelope-container">
+        <!-- VISTA SOBRE CERRADO ACOLCHADO DE LA PÁGINA 1 -->
+        <img src="images/sobre-cerrado.png" alt="Sobre cerrado de boda" class="envelope-bg">
+
+        <!-- SOLAPA DEL SOBRE CON TEXTURAS REALES (FRENTE ACOLCHADO Y DORSO FORRADO) -->
+        <div class="envelope-flap" id="envelope-flap">
+          <div class="envelope-flap-face envelope-flap-front">
+            <img src="images/solapa-front.png" alt="Solapa acolchada cerrada">
+          </div>
+          <div class="envelope-flap-face envelope-flap-back">
+            <img src="images/solapa-back.png" alt="Interior solapa">
+          </div>
+        </div>
+
+        <!-- SELLO DE CERA DORADO EN EL CENTRO (Z-INDEX SUPERIOR A LA SOLAPA CERRADA) -->
+        <button type="button" class="wax-seal-btn" id="wax-seal-btn" aria-label="Pulsa el sello para abrir la invitación">
+          <img src="images/logo-boda.png" alt="Logo Paula y Agustín">
+        </button>
+
+        <!-- TARJETÓN FORMAL DE LA PÁGINA 3 QUE EMERGE DEL SOBRE -->
+        <div class="envelope-tarjeton-popup" id="envelope-tarjeton-popup">
+          <img src="images/tarjeta-formal.png" alt="Tarjeta formal de invitación Paula y Agustín">
+        </div>
+      </div>
+
+      <!-- SCROLL HINT: aparece debajo del tarjetón una vez abierto -->
+      <div class="envelope-scroll-hint" id="envelope-scroll-hint" aria-hidden="true">
+        <span>Desliza para continuar</span>
+        <span>↓</span>
+      </div>
+
+      <p class="open-hint" id="envelope-open-hint">Pulsa el sello para abrir</p>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       CONTENIDO PRINCIPAL TRAS ABRIR EL SOBRE
+       ========================================================================== -->
+  <div id="main-content">
+
+    <!-- PORTADA / HERO CON FOTO REAL (PÁG 5) Y ADORNO DECORATIVO EN ESQUINA (PÁG 16) -->
+    <section class="hero" id="hero">
+      <!-- Adorno superior izquierdo (Pág. 16) -->
+      <div class="hero-corner-decor">
+        <img src="images/guirnalda-bolas-lazos.png" alt="Adorno navideño bolas A y P">
+      </div>
+
+      <p class="hero-kicker">¡Nos casamos!</p>
+      <h1 class="hero-title">Agustín y Paula</h1>
+
+      <div class="hero-photo-wrap">
+        <img src="images/foto-pareja.png" alt="Paula y Agustín">
+      </div>
+
+      <div class="festive-divider">
+        <span class="line"></span><span>✦</span><span>●</span><span>❄</span><span class="line"></span>
+      </div>
+
+      <p class="hero-date">12 de diciembre de 2026</p>
+      <p class="hero-location">CULLERA, VALENCIA</p>
+
+    </section>
+
+    <!-- MENSAJE Y CUENTA ATRÁS (FONDO VERDE CON DEGRADADO) -->
+    <section class="section green-gradient">
+      <div class="pearl-divider">● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●</div>
+      
+      <p class="welcome-text">
+        Y nos hace especial ilusión poder compartir este día con vosotros. En esta página encontraréis todos los detalles necesarios para acompañarnos.<br><br>
+        <strong>Gracias por formar parte de este momento.</strong>
+      </p>
+
+      <p class="section-kicker">CUENTA ATRÁS</p>
+      <div class="festive-divider">
+        <span class="line"></span><span>✦</span><span>●</span><span>❄</span><span class="line"></span>
+      </div>
+
+      <div class="countdown-grid" id="countdown">
+        <div class="countdown-box">
+          <span class="countdown-num" id="cd-days">00</span>
+          <span class="countdown-label">Días</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-num" id="cd-hours">00</span>
+          <span class="countdown-label">Horas</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-num" id="cd-minutes">00</span>
+          <span class="countdown-label">Minutos</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-num" id="cd-seconds">00</span>
+          <span class="countdown-label">Segundos</span>
+        </div>
+      </div>
+
+      <div class="pearl-divider" style="margin-top:2.5rem;">● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●</div>
+    </section>
+
+    <!-- DETALLES: CEREMONIA Y CELEBRACIÓN -->
+    <section class="section cream" id="details">
+      <!-- Guirnalda de pino y piñas nevadas (100% transparente) -->
+      <div class="garland-pine-top">
+        <img src="images/guirnalda-pino-pina.png" alt="Guirnalda de pino y piñas nevadas">
+      </div>
+
+      <p class="section-kicker">DETALLES</p>
+      <div class="festive-divider">
+        <span class="line"></span><span>✦</span><span>●</span><span>❄</span><span class="line"></span>
+      </div>
+
+      <div class="container-sm">
+        <!-- Tarjeta Ceremonia -->
+        <div class="venue-card">
+          <div class="venue-ribbon-top"></div>
+          <div class="venue-body">
+            <p class="venue-kicker">CEREMONIA</p>
+            <h3 class="venue-name">Santuario Virgen del Castillo</h3>
+            
+            <div class="venue-img-wrap">
+              <img src="images/santuario.png" alt="Santuario Virgen del Castillo">
+            </div>
+
+            <p class="venue-info">📅 12 de diciembre de 2026</p>
+            <p class="venue-info">🕐 12:00h</p>
+            <p class="venue-info">📍 Cullera, Valencia</p>
+
+            <a class="btn-maps" href="https://maps.google.com/?q=Santuario+Virgen+del+Castillo+Cullera" target="_blank" rel="noopener noreferrer">
+              <span>📍</span> Cómo llegar
+            </a>
+          </div>
+        </div>
+
+        <!-- Tarjeta Celebración -->
+        <div class="venue-card">
+          <div class="venue-ribbon-top"></div>
+          <div class="venue-body">
+            <p class="venue-kicker">CELEBRACIÓN</p>
+            <h3 class="venue-name">Sala Encontres Molí Nou</h3>
+
+            <div class="venue-img-wrap">
+              <img src="images/moli-nou.png" alt="Sala Encontres Molí Nou">
+            </div>
+
+            <p class="venue-info">📅 12 de diciembre de 2026</p>
+            <p class="venue-info">🕐 14:00h</p>
+            <p class="venue-info">📍 Beniflá, Valencia</p>
+
+            <a class="btn-maps" href="https://maps.google.com/?q=Sala+Encontres+Moli+Nou+Benifla" target="_blank" rel="noopener noreferrer">
+              <span>📍</span> Cómo llegar
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRASLADOS (FONDO ROJO/GRANATE CON DEGRADADO) -->
+    <section class="section red-gradient" id="transport">
+      <!-- Trineo de Santa transparente -->
+      <div class="santa-wrap">
+        <img src="images/trineo-santa.png" alt="Papá Noel en trineo con renos">
+      </div>
+
+      <p class="section-kicker">TRASLADOS</p>
+      <div class="festive-divider">
+        <span class="line"></span><span>❄</span><span>●</span><span>✦</span><span class="line"></span>
+      </div>
+
+      <div class="container-sm">
+        <div class="bus-illustration">
+          <img src="images/autobus.png" alt="Autobús para invitados">
+        </div>
+
+        <div class="timeline-card">
+          <h4 class="timeline-title">Disponibilidad de autobús;</h4>
+
+          <!-- Línea de tiempo Alzira -->
+          <div class="route-block">
+            <div class="route-line">
+              <div class="route-stop">
+                <span class="route-time">11:00h</span>
+                <span class="route-dot"></span>
+                <span class="route-name">Alzira</span>
+              </div>
+              <div class="route-stop">
+                <span class="route-time">12:00h</span>
+                <span class="route-dot"></span>
+                <span class="route-name">Ceremonia</span>
+              </div>
+              <div class="route-stop">
+                <span class="route-time">14:00h</span>
+                <span class="route-dot"></span>
+                <span class="route-name">Celebración</span>
+              </div>
+              <div class="route-stop">
+                <span class="route-time">00:00h</span>
+                <span class="route-dot"></span>
+                <span class="route-name">Alzira</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Línea de tiempo Cullera -->
+          <div class="route-block">
+            <div class="route-line">
+              <div class="route-stop">
+                <span class="route-time">11:15h</span>
+                <span class="route-dot"></span>
+                <span class="route-name">Cullera</span>
+              </div>
+              <div class="route-stop">
+                <span class="route-time">12:00h</span>
+                <span class="route-dot"></span>
+                <span class="route-name">Ceremonia</span>
+              </div>
+              <div class="route-stop">
+                <span class="route-time">14:00h</span>
+                <span class="route-dot"></span>
+                <span class="route-name">Celebración</span>
+              </div>
+              <div class="route-stop">
+                <span class="route-time">00:00h</span>
+                <span class="route-dot"></span>
+                <span class="route-name">Cullera</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="section cream" id="dresscode">
+      <div class="container-sm">
+        <div class="dresscode-box">
+          <p class="dresscode-title">DRESS CODE</p>
+          <div class="festive-divider" style="margin-bottom:1rem;">
+            <span class="line"></span><span>✦</span><span>●</span><span>❄</span><span class="line"></span>
+          </div>
+
+          <p class="dresscode-message">
+            No olvides traer zapato cómodo para la fiesta, ¡vamos a darlo todo!
+          </p>
+
+          <div class="pearl-divider" style="margin:0.8rem 0;">● ● ● ● ● ● ● ● ● ● ● ● ● ● ●</div>
+
+          <!-- Guirnalda festiva con bolas navideñas -->
+          <div class="garland-party-balls">
+            <img src="images/guirnalda-bolas-fiesta.png" alt="Guirnalda navideña de fiesta">
+          </div>
+
+          <!-- Invitados bailando -->
+          <div class="guests-illustration">
+            <img src="images/invitados-baile.png" alt="Invitados de fiesta celebrando">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARIO "¿NOS ACOMPAÑAS?" (FONDO CLARO/CREAM PARA MÁXIMO CONTRASTE DEL DIBUJO) -->
+    <section class="section cream" id="rsvp">
+      <!-- Guirnalda con bolas A y P sobre fondo claro: 100% visible y nítida -->
+      <div class="rsvp-header-img">
+        <img src="images/guirnalda-bolas-lazos.png" alt="Guirnalda con bolas A y P">
+      </div>
+
+      <h2 class="rsvp-title-big">¿Nos acompañas?</h2>
+      <p style="text-align:center;font-family:var(--font-sans);font-style:italic;font-size:1.05rem;color:var(--color-text);max-width:340px;margin:0.4rem auto 0;opacity:0.95;">
+        Nos haría mucha ilusión compartir este día contigo.
+      </p>
+      <p style="text-align:center;font-family:var(--font-sans);font-size:0.78rem;color:var(--color-red);margin-top:0.4rem;font-weight:600;letter-spacing:0.04em;">
+        Rellena una respuesta por cada asistente
+      </p>
+
+      <div class="container-sm">
+        <div class="rsvp-box">
+          <form id="rsvp-form">
+            <div class="attend-toggle">
+              <button type="button" class="attend-btn" data-value="yes">Sí, asistiré</button>
+              <button type="button" class="attend-btn" data-value="no">No podré asistir</button>
+            </div>
+
+            <div class="rsvp-fields" id="rsvp-fields">
+              <div class="field-row">
+                <div class="form-group">
+                  <label for="firstName">Nombre</label>
+                  <input class="input-field" id="firstName" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Apellidos</label>
+                  <input class="input-field" id="lastName" required placeholder="Tus apellidos">
+                </div>
+              </div>
+
+              <div class="only-yes">
+                <div class="form-group">
+                  <label for="allergies">Alergias / Intolerancias</label>
+                  <input class="input-field" id="allergies" placeholder="Opcional (celiaquía, etc.)">
+                </div>
+                <div class="form-group">
+                  <label for="childMenu">Menú infantil</label>
+                  <input class="input-field" id="childMenu" placeholder="Edad aproximada si aplica">
+                </div>
+                <div class="form-group">
+                  <label for="specialNeeds">Otras necesidades</label>
+                  <input class="input-field" id="specialNeeds" placeholder="Ej. trona, accesibilidad...">
+                </div>
+
+                <!-- AUTOBÚS / TAXI: CHECKBOXES 100% OPERATIVOS -->
+                <fieldset class="transport-fieldset">
+                  <legend>Autobús / Taxi</legend>
+                  <p style="font-size:0.75rem;color:rgba(40,34,29,0.7);margin-bottom:0.4rem;font-style:italic;">
+                    Puedes marcar varias opciones para ida, vuelta o ambas.
+                  </p>
+                  <label class="check-option">
+                    <input type="checkbox" name="bus" value="11:00h Alzira -> Ceremonia">
+                    <span>11:00h Alzira → Ceremonia (Ida)</span>
+                  </label>
+                  <label class="check-option">
+                    <input type="checkbox" name="bus" value="11:15h Cullera -> Ceremonia">
+                    <span>11:15h Cullera → Ceremonia (Ida)</span>
+                  </label>
+                  <label class="check-option">
+                    <input type="checkbox" name="bus" value="13:00h Ceremonia -> Celebracion">
+                    <span>13:00h Ceremonia → Celebración (Traslado)</span>
+                  </label>
+                  <label class="check-option">
+                    <input type="checkbox" name="bus" value="00:00h Celebracion -> Alzira">
+                    <span>00:00h Celebración → Alzira (Vuelta)</span>
+                  </label>
+                  <label class="check-option">
+                    <input type="checkbox" name="bus" value="00:00h Celebracion -> Cullera">
+                    <span>00:00h Celebración → Cullera (Vuelta)</span>
+                  </label>
+                  <label class="check-option">
+                    <input type="checkbox" name="bus" value="Taxi">
+                    <span>Necesitaré taxi</span>
+                  </label>
+
+                  <div class="form-group" style="margin-top:0.4rem;">
+                    <label for="taxiTime" style="font-size:0.75rem !important;">Hora aproximada de taxi (si aplica)</label>
+                    <input class="input-field" id="taxiTime" placeholder="Opcional">
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="form-group">
+                <label for="comments">Comentarios</label>
+                <textarea class="input-field" id="comments" style="min-height:75px;resize:none;" placeholder="¿Algo más que quieras decirnos?"></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn" id="submit-btn">Enviar confirmación</button>
+            </div>
+          </form>
+
+          <!-- Pantalla de confirmación y botón para volver al sobre inicial -->
+          <div class="thanks-box" id="thanks-box">
+            <div class="thanks-icon">🎄</div>
+            <h3 class="thanks-title" id="thanks-title">¡Gracias!</h3>
+            <p id="thanks-msg" style="font-family:var(--font-sans);font-style:italic;font-size:0.98rem;color:var(--color-text);max-width:300px;margin:0 auto;line-height:1.5;">
+              Nos hace muchísima ilusión saber que estarás con nosotros en nuestro gran día.
+            </p>
+
+            <div>
+              <button type="button" class="btn-return-envelope" id="btn-return-envelope">
+                <span>✉️</span> Volver al sobre inicial
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ¿DÓNDE ALOJARSE? (CON GUIRNALDA DE PINO MINI EN VEZ DE ACEBO) -->
+    <section class="accommodation-section" id="hotels">
+      <!-- Luna con nubes -->
+      <div class="moon-header-wrap">
+        <img src="images/luna-nubes.png" alt="Luna con nubes">
+      </div>
+
+      <p class="section-kicker">¿DÓNDE ALOJARSE?</p>
+      <div class="festive-divider">
+        <span class="line"></span><span>❄</span><span>●</span><span>✦</span><span class="line"></span>
+      </div>
+
+      <p style="text-align:center;font-family:var(--font-sans);font-style:italic;font-size:1.15rem;color:var(--color-text);margin-bottom:2.2rem;">
+        Os recomendamos las siguientes opciones para quién las necesitéis
+      </p>
+
+      <div class="container-sm">
+        <!-- 1. EN CULLERA -->
+        <div class="hotel-area-block">
+          <div class="garland-pine-mini">
+            <img src="images/guirnalda-pino-pina.png" alt="Guirnalda de pino y piñas">
+          </div>
+          <h4 class="hotel-city-title">En Cullera</h4>
+
+          <div class="hotel-cards-container">
+            <div class="hotel-card-item">
+              <div class="hotel-info-left">
+                <h5 class="hotel-name">Hotel L'Escala</h5>
+                <p class="hotel-location">Cullera, Valencia</p>
+              </div>
+              <a class="btn-hotel-map" href="https://maps.google.com/?q=Hotel+L%27Escala+Cullera" target="_blank" rel="noopener noreferrer">
+                <span>📍</span> Ver alojamiento
+              </a>
+            </div>
+
+            <div class="hotel-card-item">
+              <div class="hotel-info-left">
+                <h5 class="hotel-name">Apartamentos Milenio</h5>
+                <p class="hotel-location">Cullera, Valencia</p>
+              </div>
+              <a class="btn-hotel-map" href="https://maps.google.com/?q=Apartamentos+Milenio+Cullera" target="_blank" rel="noopener noreferrer">
+                <span>📍</span> Ver alojamiento
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. EN ALZIRA -->
+        <div class="hotel-area-block">
+          <div class="garland-pine-mini">
+            <img src="images/guirnalda-pino-pina.png" alt="Guirnalda de pino y piñas">
+          </div>
+          <h4 class="hotel-city-title">En Alzira</h4>
+
+          <div class="hotel-cards-container">
+            <div class="hotel-card-item">
+              <div class="hotel-info-left">
+                <h5 class="hotel-name">Hotel Avenida Plaza</h5>
+                <p class="hotel-location">Alzira, Valencia</p>
+              </div>
+              <a class="btn-hotel-map" href="https://maps.google.com/?q=Hotel+Avenida+Plaza+Alzira" target="_blank" rel="noopener noreferrer">
+                <span>📍</span> Ver alojamiento
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. EN GANDIA -->
+        <div class="hotel-area-block">
+          <div class="garland-pine-mini">
+            <img src="images/guirnalda-pino-pina.png" alt="Guirnalda de pino y piñas">
+          </div>
+          <h4 class="hotel-city-title">En Gandia</h4>
+
+          <div class="hotel-cards-container">
+            <div class="hotel-card-item">
+              <div class="hotel-info-left">
+                <h5 class="hotel-name">Hotel Senator</h5>
+                <p class="hotel-location">Gandia, Valencia</p>
+              </div>
+              <a class="btn-hotel-map" href="https://maps.google.com/?q=Hotel+Senator+Gandia" target="_blank" rel="noopener noreferrer">
+                <span>📍</span> Ver alojamiento
+              </a>
+            </div>
+
+            <div class="hotel-card-item">
+              <div class="hotel-info-left">
+                <h5 class="hotel-name">Hotel Bayren</h5>
+                <p class="hotel-location">Gandia, Valencia</p>
+              </div>
+              <a class="btn-hotel-map" href="https://maps.google.com/?q=Hotel+Bayren+Gandia" target="_blank" rel="noopener noreferrer">
+                <span>📍</span> Ver alojamiento
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LISTA DE BODAS (FONDO VERDE CON DEGRADADO) -->
+    <section class="section green-gradient" id="gift">
+      <div class="container-sm">
+        <div class="gift-container">
+          <!-- Lazo de regalo dorado -->
+          <div class="gift-bow">
+            <img src="images/lazo-dorado.png" alt="Lazo de regalo dorado">
+          </div>
+
+          <p class="section-kicker" style="margin-top:0.4rem; color:var(--color-gold-light);">LISTA DE BODAS</p>
+          <div class="festive-divider">
+            <span class="line"></span><span>✦</span><span>●</span><span>❄</span><span class="line"></span>
+          </div>
+
+          <p class="gift-intro">Para esta Navidad, sólo queremos;</p>
+
+          <div class="gift-verse">
+            Sonrisas sinceras,<br>
+            Besos con cariño,<br>
+            Abrazos que aprietan,<br>
+            Brindis en alto,<br>
+            Bailes sin descanso,<br>
+            Canciones a pleno pulmón.
+          </div>
+
+          <p style="font-family:var(--font-sans);font-style:italic;font-size:0.92rem;color:var(--color-cream);margin-bottom:1.2rem;opacity:0.95;">
+            Y si os apetece hacernos algún otro detalle y no se os ocurre nada:
+          </p>
+
+          <div class="gift-iban-box">
+            ES37 1583 0001 1391 9729 9581
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFORMACIÓN ÚTIL (FAQ) -->
+    <section class="section cream" style="background-color: var(--color-cream-alt);">
+      <p class="section-kicker">INFORMACIÓN ÚTIL</p>
+      <div class="festive-divider">
+        <span class="line"></span><span>❄</span><span>●</span><span>✦</span><span class="line"></span>
+      </div>
+
+      <div class="container-sm">
+        <div class="faq-card">
+          <!-- 1. Aparcamiento -->
+          <div class="faq-item open">
+            <button type="button" class="faq-question">¿Hay aparcamiento?<span class="faq-plus">+</span></button>
+            <div class="faq-answer">
+              <p>Sí, tanto en el Santuario Virgen del Castillo como en la Sala Encontres Molí Nou hay parking disponible para coches particulares.</p>
+            </div>
+          </div>
+
+          <!-- 2. Transporte organizado con taxi -->
+          <div class="faq-item">
+            <button type="button" class="faq-question">¿Hay transporte organizado?<span class="faq-plus">+</span></button>
+            <div class="faq-answer">
+              <p>Sí, habrá autobuses desde Alzira y Cullera hasta la ceremonia, y de vuelta desde la celebración. Consulta los horarios en la sección de traslados. Si lo necesitáis, desde Molí Nou pueden gestionar taxis para la vuelta.</p>
+            </div>
+          </div>
+
+          <!-- 3. Fecha límite 30 de noviembre -->
+          <div class="faq-item">
+            <button type="button" class="faq-question">¿Hasta cuándo puedo confirmar?<span class="faq-plus">+</span></button>
+            <div class="faq-answer">
+              <p>Os agradeceríamos que confirmarais lo antes posible a través del formulario de esta página, rellenando una respuesta por cada asistente. No obstante, la fecha límite es el 30 de Noviembre de 2026.</p>
+            </div>
+          </div>
+
+          <!-- 4. Alojamiento -->
+          <div class="faq-item">
+            <button type="button" class="faq-question">¿Hay alojamiento cerca?<span class="faq-plus">+</span></button>
+            <div class="faq-answer">
+              <p>Sí, os hemos dejado algunas recomendaciones sobre alojamientos cercanos.</p>
+            </div>
+          </div>
+
+          <!-- 5. Menú -->
+          <div class="faq-item">
+            <button type="button" class="faq-question">¿Hay alguna consideración especial sobre el menú?<span class="faq-plus">+</span></button>
+            <div class="faq-answer">
+              <p>Indícanos tus alergias o intolerancias al confirmar la asistencia para poder adaptar el menú a tus necesidades.</p>
+            </div>
+          </div>
+
+          <!-- 6. Otras dudas -->
+          <div class="faq-item">
+            <button type="button" class="faq-question">¿Tenéis alguna otra duda?<span class="faq-plus">+</span></button>
+            <div class="faq-answer">
+              <p>Si tenéis cualquier otra duda, podéis poneros en contacto con los novios: Paula 664459929, Agustín 600239543.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BANNER LEMA FINAL (FONDO ROJO/GRANATE CON DEGRADADO - PÁG 15) -->
+    <section class="quote-banner">
+      <div class="quote-box-inner">
+        <h2 class="quote-main-title">
+          LO MEJOR DE<br>
+          LA NAVIDAD ES<br>
+          CON QUIÉN SE<br>
+          COMPARTE
+        </h2>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-logo-wrap">
+        <img src="images/logo-boda.png" alt="Paula y Agustín">
+      </div>
+      <div class="footer-names">Paula &amp; Agustín</div>
+      <p style="font-family:var(--font-sans);font-size:0.8rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--color-gold-light);margin-bottom:1.4rem;">
+        12 DE DICIEMBRE DE 2026
+      </p>
+
+      <div style="font-family:var(--font-sans);font-style:italic;font-size:0.88rem;color:rgba(251,247,240,0.8);display:flex;flex-direction:column;gap:0.35rem;">
+        <span>Paula | 664 459 929</span>
+        <span>Agustín | 600 239 543</span>
+      </div>
+
+      <p style="font-family:var(--font-sans);font-size:0.75rem;color:rgba(251,247,240,0.55);margin-top:1.5rem;">
+        #PaulayAgustin2026
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- CONTROL DE MÚSICA -->
+  <button type="button" id="music-btn" aria-label="Música de boda (Harry Potter)">
+    <span class="ring"></span>
+    <span id="music-icon">▶</span>
+  </button>
+  <audio id="bg-audio" loop preload="none" src="wedding-song.mp3"></audio>
+
+  <!-- BARRA DE NAVEGACIÓN RÁPIDA -->
+  <nav id="floating-nav" aria-label="Navegación rápida">
+    <ul>
+      <li><button type="button" data-target="hero" class="active"><span class="ic">🏠</span>Inicio</button></li>
+      <li><button type="button" data-target="details"><span class="ic">📍</span>Detalles</button></li>
+      <li><button type="button" data-target="transport"><span class="ic">🚌</span>Traslados</button></li>
+      <li><button type="button" data-target="dresscode"><span class="ic">👗</span>Dress Code</button></li>
+      <li><button type="button" data-target="rsvp"><span class="ic">💌</span>Asistencia</button></li>
+      <li><button type="button" data-target="hotels"><span class="ic">🏨</span>Hoteles</button></li>
+    </ul>
+  </nav>
+
+  <!-- ==========================================================================
+       JAVASCRIPT: HARRY POTTER CELESTA SYNTH, APERTURA CON TARJETÓN Y ASISTENCIA
+       ========================================================================== -->
+  <script>
+    const CONFIG = {
+      coupleName1: 'Paula',
+      coupleName2: 'Agustín',
+      weddingDateISO: '2026-12-12T12:00:00+01:00',
+      guestParamEnabled: true,
+      googleSheetScriptUrl: 'https://script.google.com/macros/s/AKfycbwS5zcQaw6gJ1UMQalynhfb1zPWw5SW3rkvgkb9socGSbv0mjbbENURINx_7JBTgY9g/exec',
+      whatsappPhone: '34664459929'
+    };
+
+    /*
+     * 1. PERSONALIZACIÓN POR PARÁMETRO (?to=Nombre)
+     */
+    if (CONFIG.guestParamEnabled) {
+      const toParam = new URLSearchParams(window.location.search).get('to');
+      if (toParam) {
+        const guestName = decodeURIComponent(toParam);
+        document.getElementById('guest-tag').textContent = 'Para ' + guestName;
+      }
+    }
+
+    /*
+     * 2. GENERADOR DE NIEVE UNIFICADO
+     */
+    const globalSnow = document.getElementById('global-snow');
+    if (globalSnow) {
+      const flakeCount = 42;
+      for (let i = 0; i < flakeCount; i++) {
+        const flake = document.createElement('span');
+        flake.className = 'g-flake';
+        const size = 2.5 + Math.random() * 5;
+        flake.style.left = (Math.random() * 100) + '%';
+        flake.style.width = size + 'px';
+        flake.style.height = size + 'px';
+        flake.style.setProperty('--drift', (15 + Math.random() * 40) + 'px');
+        flake.style.animationDuration = (3.5 + Math.random() * 4.5) + 's';
+        flake.style.animationDelay = (Math.random() * 5) + 's';
+        globalSnow.appendChild(flake);
+      }
+    }
+
+    /*
+     * 3. SINTETIZADOR MÁGICO DE HARRY POTTER (HEDWIG'S THEME)
+     */
+    let audioCtx = null;
+    let isSynthPlaying = false;
+    let synthTimeoutId = null;
+
+    const HP_NOTES = {
+      B3: 246.94, C4: 261.63, D4: 293.66, Ds4: 311.13, E4: 329.63, F4: 349.23, Fs4: 369.99, G4: 392.00, Gs4: 415.30, A4: 440.00, As4: 466.16, B4: 493.88,
+      C5: 523.25, Cs5: 554.37, D5: 587.33, Ds5: 622.25, E5: 659.25, F5: 698.46, Fs5: 739.99, G5: 783.99, Gs5: 830.61, A5: 880.00, As5: 932.33, B5: 987.77,
+      C6: 1046.50, Cs6: 1108.73, D6: 1174.66, Ds6: 1244.51, E6: 1318.51
+    };
+
+    const HEDWIG_MELODY = [
+      { n: 'B4', d: 1.0 },
+      { n: 'E5', d: 1.5 }, { n: 'G5', d: 0.5 }, { n: 'Fs5', d: 1.0 },
+      { n: 'E5', d: 2.0 }, { n: 'B5', d: 1.0 },
+      { n: 'A5', d: 3.0 },
+      { n: 'Fs5', d: 3.0 },
+      { n: 'E5', d: 1.5 }, { n: 'G5', d: 0.5 }, { n: 'Fs5', d: 1.0 },
+      { n: 'Ds5', d: 2.0 }, { n: 'F5', d: 1.0 },
+      { n: 'B4', d: 3.5 },
+      { n: 'B4', d: 1.0 },
+      { n: 'E5', d: 1.5 }, { n: 'G5', d: 0.5 }, { n: 'Fs5', d: 1.0 },
+      { n: 'E5', d: 2.0 }, { n: 'B5', d: 1.0 },
+      { n: 'D6', d: 2.0 }, { n: 'Cs6', d: 1.0 },
+      { n: 'C6', d: 2.0 }, { n: 'Gs5', d: 1.0 },
+      { n: 'C6', d: 1.5 }, { n: 'B5', d: 0.5 }, { n: 'As5', d: 1.0 },
+      { n: 'As4', d: 2.0 }, { n: 'G5', d: 1.0 },
+      { n: 'E5', d: 3.5 }
+    ];
+
+    function playCelestaNote(freq, durationSec) {
+      if (!audioCtx) return;
+      const now = audioCtx.currentTime;
+
+      const osc1 = audioCtx.createOscillator();
+      const gain1 = audioCtx.createGain();
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(freq, now);
+
+      const osc2 = audioCtx.createOscillator();
+      const gain2 = audioCtx.createGain();
+      osc2.type = 'triangle';
+      osc2.frequency.setValueAtTime(freq * 2.002, now);
+
+      gain1.gain.setValueAtTime(0.001, now);
+      gain1.gain.linearRampToValueAtTime(0.25, now + 0.015);
+      gain1.gain.exponentialRampToValueAtTime(0.0001, now + Math.max(durationSec * 1.2, 0.8));
+
+      gain2.gain.setValueAtTime(0.001, now);
+      gain2.gain.linearRampToValueAtTime(0.08, now + 0.015);
+      gain2.gain.exponentialRampToValueAtTime(0.0001, now + Math.max(durationSec * 0.9, 0.5));
+
+      osc1.connect(gain1);
+      osc2.connect(gain2);
+      gain1.connect(audioCtx.destination);
+      gain2.connect(audioCtx.destination);
+
+      osc1.start(now);
+      osc2.start(now);
+      osc1.stop(now + 2.5);
+      osc2.stop(now + 2.5);
+    }
+
+    function startHarryPotterMusic() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) audioCtx = new AudioContextClass();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      const bgAudio = document.getElementById('bg-audio');
+      if (bgAudio && bgAudio.currentSrc) {
+        bgAudio.play().then(() => {
+          updateMusicButtonUI(true);
+          return;
+        }).catch(() => {
+          runSynthLoop();
+        });
+      } else {
+        runSynthLoop();
+      }
+    }
+
+    function runSynthLoop() {
+      if (isSynthPlaying) return;
+      isSynthPlaying = true;
+      updateMusicButtonUI(true);
+
+      const beatDuration = 0.44;
+      let currentStep = 0;
+
+      function nextNote() {
+        if (!isSynthPlaying) return;
+        const item = HEDWIG_MELODY[currentStep];
+        const freq = HP_NOTES[item.n];
+        const dur = item.d * beatDuration;
+
+        playCelestaNote(freq, dur);
+
+        currentStep = (currentStep + 1) % HEDWIG_MELODY.length;
+        synthTimeoutId = setTimeout(nextNote, dur * 1000);
+      }
+
+      nextNote();
+    }
+
+    function stopHarryPotterMusic() {
+      isSynthPlaying = false;
+      if (synthTimeoutId) clearTimeout(synthTimeoutId);
+      const bgAudio = document.getElementById('bg-audio');
+      if (bgAudio) bgAudio.pause();
+      updateMusicButtonUI(false);
+    }
+
+    function updateMusicButtonUI(playing) {
+      const musicBtn = document.getElementById('music-btn');
+      const musicIcon = document.getElementById('music-icon');
+      if (playing) {
+        musicBtn.classList.add('playing');
+        musicIcon.textContent = '⏸';
+      } else {
+        musicBtn.classList.remove('playing');
+        musicIcon.textContent = '▶';
+      }
+    }
+
+    document.getElementById('music-btn').addEventListener('click', () => {
+      if (isSynthPlaying || (document.getElementById('bg-audio') && !document.getElementById('bg-audio').paused)) {
+        stopHarryPotterMusic();
+      } else {
+        startHarryPotterMusic();
+      }
+    });
+
+    /*
+     * 4. APERTURA DEL SOBRE: SOLAPA SE ABRE, TARJETÓN EMERGE, SCROLL PARA VER WEB
+     */
+    const waxSealBtn = document.getElementById('wax-seal-btn');
+    const envelopeContainer = document.getElementById('envelope-container');
+    const envelopeScreen = document.getElementById('envelope-screen');
+    const envelopeOpenHint = document.getElementById('envelope-open-hint');
+    const floatingNav = document.getElementById('floating-nav');
+
+    let isEnvelopeOpen = false;
+
+    function burstSparks(btn) {
+      const sparksContainer = document.getElementById('sparks-container');
+      if (!sparksContainer) return;
+      const rect = btn.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+
+      for (let i = 0; i < 30; i++) {
+        const sp = document.createElement('span');
+        sp.className = 'spark burst';
+        const angle = (Math.PI * 2 * i) / 30;
+        const dist = 55 + Math.random() * 80;
+        sp.style.setProperty('--dx', (Math.cos(angle) * dist) + 'px');
+        sp.style.setProperty('--dy', (Math.sin(angle) * dist) + 'px');
+        sp.style.left = x + 'px';
+        sp.style.top = y + 'px';
+        sparksContainer.appendChild(sp);
+        setTimeout(() => sp.remove(), 950);
+      }
+    }
+
+    function openEnvelope() {
+      if (isEnvelopeOpen) return;
+      isEnvelopeOpen = true;
+
+      // 1. Música automática de Harry Potter
+      startHarryPotterMusic();
+
+      // 2. Destellos dorados en el sello
+      burstSparks(waxSealBtn);
+
+      // 3. Abrir la solapa del sobre (animación CSS)
+      envelopeContainer.classList.add('flap-open');
+
+      // 4. Tras abrir la solapa, aparece el tarjetón
+      setTimeout(() => {
+        envelopeContainer.classList.add('tarjeton-active');
+      }, 400);
+
+      // 5. Ocultar hint de "Pulsa el sello", mostrar scroll hint y nav
+      envelopeOpenHint.style.display = 'none';
+      envelopeScreen.classList.add('opened');
+      floatingNav.classList.add('visible');
+    }
+
+    function dismissEnvelope() {
+      if (!isEnvelopeOpen) return;
+      envelopeScreen.style.opacity = '0';
+      envelopeScreen.style.transform = 'translateY(-30px)';
+      setTimeout(() => {
+        envelopeScreen.classList.add('dismissed');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }, 550);
+    }
+
+    // Al deslizar hacia abajo (scroll o rueda) o tocar el hint, se desvanece el sobre
+    let touchStartY = 0;
+    window.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isEnvelopeOpen || envelopeScreen.classList.contains('dismissed')) return;
+      const touchCurrentY = e.touches[0].clientY;
+      // Si desliza el dedo hacia arriba (para hacer scroll hacia abajo)
+      if (touchStartY - touchCurrentY > 40) {
+        dismissEnvelope();
+      }
+    }, { passive: true });
+
+    window.addEventListener('wheel', (e) => {
+      if (!isEnvelopeOpen || envelopeScreen.classList.contains('dismissed')) return;
+      if (e.deltaY > 20) {
+        dismissEnvelope();
+      }
+    }, { passive: true });
+
+    const envelopeScrollHint = document.getElementById('envelope-scroll-hint');
+    if (envelopeScrollHint) {
+      envelopeScrollHint.addEventListener('click', dismissEnvelope);
+    }
+
+    waxSealBtn.addEventListener('click', openEnvelope);
+
+    /*
+     * 5. RETORNO AL SOBRE INICIAL TRAS COMPLETAR ASISTENCIA
+     */
+    document.getElementById('btn-return-envelope').addEventListener('click', () => {
+      floatingNav.classList.remove('visible');
+      envelopeScreen.classList.remove('dismissed');
+      envelopeScreen.style.opacity = '1';
+      envelopeScreen.style.transform = 'none';
+      envelopeScreen.classList.remove('opened');
+      envelopeContainer.classList.remove('tarjeton-active');
+      envelopeContainer.classList.remove('flap-open');
+      envelopeOpenHint.style.display = 'block';
+      waxSealBtn.style.transform = '';
+      waxSealBtn.style.opacity = '';
+      isEnvelopeOpen = false;
+
+      // Resetear formulario
+      document.getElementById('rsvp-form').reset();
+      document.getElementById('rsvp-form').style.display = 'block';
+      document.getElementById('thanks-box').classList.remove('visible');
+      document.getElementById('rsvp-fields').classList.remove('visible');
+      document.querySelectorAll('.attend-btn').forEach(b => b.classList.remove('active'));
+      selectedAttendance = null;
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /*
+     * 6. CUENTA ATRÁS
+     */
+    function updateCountdown() {
+      const targetTime = new Date(CONFIG.weddingDateISO).getTime();
+      const diff = targetTime - Date.now();
+
+      if (diff <= 0) return;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    /*
+     * 7. FAQ ACORDEÓN
+     */
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(other => other.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    /*
+     * 8. FORMULARIO "¿NOS ACOMPAÑAS?"
+     */
+    let selectedAttendance = null;
+    const rsvpFields = document.getElementById('rsvp-fields');
+    const rsvpForm = document.getElementById('rsvp-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    document.querySelectorAll('.attend-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedAttendance = btn.dataset.value;
+        document.querySelectorAll('.attend-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        rsvpFields.classList.add('visible');
+        rsvpFields.dataset.attendance = selectedAttendance;
+      });
+    });
+
+    rsvpForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      if (!selectedAttendance) return;
+
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      if (!firstName || !lastName) return;
+
+      const buses = Array.from(document.querySelectorAll('input[name="bus"]:checked')).map(el => el.value);
+
+      const payload = {
+        submittedAt: new Date().toLocaleString('es-ES'),
+        attendance: selectedAttendance,
+        firstName,
+        lastName,
+        comments: document.getElementById('comments').value.trim(),
+        allergies: selectedAttendance === 'yes' ? document.getElementById('allergies').value.trim() : '',
+        childMenu: selectedAttendance === 'yes' ? document.getElementById('childMenu').value.trim() : '',
+        specialNeeds: selectedAttendance === 'yes' ? document.getElementById('specialNeeds').value.trim() : '',
+        transport: selectedAttendance === 'yes' ? buses : [],
+        taxiTime: selectedAttendance === 'yes' ? document.getElementById('taxiTime').value.trim() : ''
+      };
+
+      try {
+        const stored = JSON.parse(localStorage.getItem('wedding_rsvp_list') || '[]');
+        stored.push(payload);
+        localStorage.setItem('wedding_rsvp_list', JSON.stringify(stored));
+      } catch (err) {}
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+
+      if (CONFIG.googleSheetScriptUrl) {
+        try {
+          await fetch(CONFIG.googleSheetScriptUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload)
+          });
+        } catch (error) {}
+      }
+
+      rsvpForm.style.display = 'none';
+      const thanksBox = document.getElementById('thanks-box');
+      const title = document.getElementById('thanks-title');
+      const msg = document.getElementById('thanks-msg');
+
+      if (selectedAttendance === 'yes') {
+        title.textContent = '¡Gracias!';
+        msg.textContent = 'Nos hace muchísima ilusión saber que estarás con nosotros en nuestro gran día.';
+      } else {
+        title.textContent = 'Muchas gracias';
+        msg.textContent = 'Sentimos mucho que no puedas acompañarnos. Te agradecemos que nos lo hayas comunicado.';
+      }
+
+      thanksBox.classList.add('visible');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar confirmación';
+    });
+
+    /*
+     * 9. NAVEGACIÓN RÁPIDA FLOTANTE
+     */
+    document.querySelectorAll('#floating-nav button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#floating-nav button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const target = document.getElementById(btn.dataset.target);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
