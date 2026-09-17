@@ -197,46 +197,69 @@
       transition: opacity 0.4s ease;
     }
 
-    /* ---- CONTENEDOR DEL SOBRE ---- */
+    /* ---- CONTENEDOR DEL SOBRE CON BORDES DEFINIDOS Y ELEGANTES ---- */
     .envelope-container {
       position: relative;
       width: min(94vw, 480px);
       flex-shrink: 0;
-      border-radius: 8px;
-      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.75);
+      border-radius: 10px;
+      box-shadow: 0 28px 65px -8px rgba(0, 0, 0, 0.8), 0 0 0 1.5px rgba(223, 200, 136, 0.45);
       aspect-ratio: 1490 / 1060;
-      overflow: visible; /* la solapa sale hacia arriba sin cortarse */
-      perspective: 1200px;
+      overflow: visible;
+      perspective: 1400px;
+      background: radial-gradient(circle at 50% 45%, #9b2020 0%, #731313 65%, #4e0a0a 100%);
+      border: 2px solid #360606;
     }
 
-    /* Imagen del sobre base acolchado */
-    .envelope-container img.envelope-bg {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    /* Pliegues geométricos triangulares del sobre (bordes marcados) */
+    .envelope-container::before {
+      content: '';
+      position: absolute;
+      inset: 0;
       border-radius: 8px;
+      pointer-events: none;
+      background: 
+        linear-gradient(to bottom right, rgba(0,0,0,0.3) 0%, transparent 45%),
+        linear-gradient(to bottom left, rgba(0,0,0,0.3) 0%, transparent 45%),
+        linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 40%);
+      box-shadow: inset 0 0 25px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.08);
+      z-index: 2;
     }
 
-    /* ---- SOLAPA DEL SOBRE CON TEXTURAS REALES ---- */
+    /* Solapas laterales e inferior con bordes definidos */
+    .envelope-container::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 8px;
+      pointer-events: none;
+      /* Dibuja las líneas de solapas triangulares del sobre cerrado */
+      background-image: 
+        linear-gradient(to bottom right, transparent calc(50% - 1.5px), rgba(35, 4, 4, 0.75) calc(50% - 1px), rgba(223, 200, 136, 0.3) 50%, transparent calc(50% + 1.5px)),
+        linear-gradient(to bottom left, transparent calc(50% - 1.5px), rgba(35, 4, 4, 0.75) calc(50% - 1px), rgba(223, 200, 136, 0.3) 50%, transparent calc(50% + 1.5px));
+      z-index: 3;
+      opacity: 0.85;
+    }
+
+    /* ---- SOLAPA DEL SOBRE CON BORDES MARCADOS ---- */
     .envelope-flap {
       position: absolute;
-      top: 6.6%; /* línea exacta donde se pliega la solapa en sobre-cerrado.png */
+      top: 0;
       left: 0;
       width: 100%;
-      height: 44.8%; /* proporción exacta de la solapa triangular */
+      height: 54%;
       transform-origin: top center;
       transform-style: preserve-3d;
       transform: rotateX(0deg);
       transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 20; /* por encima del sobre base, pero el sello está encima */
+      z-index: 20;
       pointer-events: none;
     }
 
     .envelope-container.flap-open .envelope-flap {
       transform: rotateX(-180deg);
-      opacity: 0;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease 0.2s;
+      opacity: 0.15;
+      transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease 0.25s;
       z-index: 5;
     }
 
@@ -249,17 +272,19 @@
       -webkit-backface-visibility: hidden;
     }
 
-    .envelope-flap-front img,
-    .envelope-flap-back img {
-      width: 100%;
-      height: 100%;
-      object-fit: fill;
-      display: block;
+    .envelope-flap-front {
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      background: radial-gradient(circle at 50% 45%, #9b2020 0%, #731313 65%, #4e0a0a 100%);
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.7));
+      border-top: 1.5px solid rgba(223, 200, 136, 0.4);
     }
 
     .envelope-flap-back {
       transform: rotateY(180deg) rotateZ(180deg);
-      filter: drop-shadow(0 -4px 10px rgba(0,0,0,0.35));
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      background: radial-gradient(circle at 50% 80%, #fbf7f0 0%, #eddac1 85%);
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.35);
+      border-bottom: 2px solid var(--color-gold);
     }
 
     /* ---- BOTÓN DEL SELLO (SIEMPRE POR ENCIMA DE LA SOLAPA CERRADA) ---- */
@@ -310,36 +335,63 @@
       animation: none;
     }
 
-    /* ---- TARJETÓN EMERGENTE (PÁG 3) ---- */
+    /* ---- TARJETÓN EMERGENTE CON GIRO 3D (ANVERSO Y REVERSO) ---- */
     .envelope-tarjeton-popup {
       position: absolute;
       left: 3%;
       right: 3%;
       top: 6%;
       z-index: 25;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      perspective: 1200px;
       opacity: 0;
       pointer-events: none;
       transform: translateY(70px) scale(0.92);
       transition: opacity 0.75s cubic-bezier(0.19, 1, 0.22, 1), transform 0.75s cubic-bezier(0.19, 1, 0.22, 1);
-      border-radius: 8px;
-      overflow: hidden;
-      background: #FFFFFF;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
     }
 
     .envelope-container.tarjeton-active .envelope-tarjeton-popup {
       opacity: 1;
       pointer-events: auto;
-      transform: translateY(-8%) scale(1); /* emerge un poco hacia arriba */
+      transform: translateY(-8%) scale(1);
     }
 
-    .envelope-tarjeton-popup img {
+    .tarjeton-flipper {
+      position: relative;
+      width: 100%;
+      transform-style: preserve-3d;
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+    }
+
+    .envelope-container.tarjeton-flipped .tarjeton-flipper {
+      transform: rotateY(180deg);
+    }
+
+    .tarjeton-face {
+      width: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #FFFFFF;
+    }
+
+    .tarjeton-face img {
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    .tarjeton-front {
+      position: relative;
+      z-index: 2;
+    }
+
+    .tarjeton-back {
+      position: absolute;
+      inset: 0;
+      transform: rotateY(180deg);
     }
 
     /* ---- SCROLL HINT: DESLIZA PARA CONTINUAR ---- */
@@ -533,14 +585,18 @@
     }
 
     /* GUIRNALDA DE PINO Y PIÑAS (PÁG 7) - TRANSPARENTE */
+    #details {
+      padding-top: 0 !important;
+    }
     .garland-pine-top {
-      max-width: 380px;
-      margin: 0 auto 1.2rem;
+      max-width: 440px;
+      margin: 0 auto 1.5rem;
+      transform: translateY(-2px);
     }
     .garland-pine-top img {
       width: 100%;
       height: auto;
-      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.06));
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
     }
 
     /* GUIRNALDA DE PINO MINI (PARA SECCIÓN DE HOTELES) */
@@ -824,13 +880,14 @@
     }
 
     .timeline-title {
-      font-family: var(--font-sans);
-      font-style: italic;
-      font-size: 1.35rem;
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 700;
       color: var(--color-gold-light);
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.6rem;
       text-align: center;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
 
     .route-block { margin-bottom: 1.8rem; }
@@ -891,6 +948,47 @@
       line-height: 1.2;
     }
 
+    .route-segment-card {
+      background: rgba(30, 6, 6, 0.55);
+      border: 1px solid rgba(223, 200, 136, 0.4);
+      border-radius: 10px;
+      padding: 1.1rem 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+    .route-segment-card:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .route-segment-badge {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-gold-light);
+      background: rgba(185, 159, 86, 0.2);
+      border: 1px solid var(--color-gold);
+      border-radius: 999px;
+      padding: 0.2rem 0.75rem;
+      margin-bottom: 0.9rem;
+      text-align: center;
+    }
+
+    .transport-disclaimer {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--color-cream);
+      text-align: center;
+      margin-top: 1.5rem;
+      padding: 0.85rem 1rem;
+      background: rgba(45, 10, 10, 0.6);
+      border: 1px dashed var(--color-gold-light);
+      border-radius: 8px;
+      line-height: 1.5;
+    }
+
     /* ==========================================================================
        DRESS CODE
        ========================================================================== */
@@ -935,21 +1033,48 @@
        FORMULARIO "¿NOS ACOMPAÑAS?" (FONDO CLARO/CREAM PARA QUE EL DIBUJO POPPE)
        ========================================================================== */
     .rsvp-header-img {
-      width: min(72%, 250px);
-      margin: 0 auto 0.8rem;
+      width: min(78%, 280px);
+      margin: 0 auto 1rem;
+      background: rgba(251, 247, 240, 0.95);
+      padding: 0.9rem 1.1rem;
+      border-radius: 16px;
+      border: 1.5px solid var(--color-gold-light);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
     }
     .rsvp-header-img img {
       width: 100%;
       height: auto;
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.1));
+      display: block;
     }
 
     .rsvp-title-big {
       font-family: var(--font-serif);
-      font-size: 2.45rem;
+      font-size: 2.55rem;
       text-align: center;
-      color: var(--color-green-deep);
+      color: #FFFFFF;
       margin-bottom: 0.4rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    }
+
+    #rsvp .rsvp-subtitle {
+      text-align: center;
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--color-cream);
+      max-width: 340px;
+      margin: 0.4rem auto 0;
+      opacity: 0.95;
+    }
+
+    #rsvp .rsvp-note {
+      text-align: center;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      color: var(--color-gold-light);
+      margin-top: 0.4rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
     }
 
     .rsvp-box {
@@ -1333,34 +1458,112 @@
     }
 
     /* ==========================================================================
-       BANNER LEMA FINAL (FONDO ROJO/GRANATE CON DEGRADADO - PÁG 15)
+       BANNER LEMA FINAL (FONDO ROJO/GRANATE NAVIDEÑO & MÁGICO - PUNTO 8)
        ========================================================================== */
     .quote-banner {
-      background: radial-gradient(circle at 50% 30%, rgba(223, 200, 136, 0.28), transparent 50%),
-                  linear-gradient(150deg, #b02828 0%, #590f0f 100%);
+      background: radial-gradient(circle at 50% 25%, rgba(223, 200, 136, 0.35) 0%, transparent 60%),
+                  radial-gradient(circle at 15% 85%, rgba(66, 84, 66, 0.5) 0%, transparent 50%),
+                  linear-gradient(150deg, #9b1e1e 0%, #681010 50%, #3e0707 100%);
       color: #FFFFFF;
-      padding: 5.5rem 1.8rem;
+      padding: 6rem 1.5rem;
       text-align: center;
       position: relative;
+      overflow: hidden;
+    }
+
+    /* Fondo de estrellas mágicas sutiles */
+    .quote-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: 
+        radial-gradient(circle, rgba(255, 235, 170, 0.8) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.6) 1.5px, transparent 2px);
+      background-size: 65px 65px, 110px 110px;
+      background-position: 10px 20px, 45px 60px;
+      opacity: 0.55;
     }
 
     .quote-box-inner {
-      max-width: 440px;
+      max-width: 480px;
       margin: 0 auto;
-      border: 3.5px solid #FFFFFF;
-      border-radius: 28px;
-      padding: 3.2rem 1.6rem;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+      border: 2px solid var(--color-gold);
+      border-radius: 24px;
+      padding: 3.5rem 1.8rem 3rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 25px rgba(185, 159, 86, 0.25);
+      background: radial-gradient(circle at 50% 30%, rgba(130, 20, 20, 0.75) 0%, rgba(60, 8, 8, 0.9) 100%);
+      backdrop-filter: blur(8px);
+      position: relative;
+    }
+
+    .quote-box-inner::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px dashed rgba(223, 200, 136, 0.5);
+      border-radius: 18px;
+      pointer-events: none;
+    }
+
+    .quote-decor-top, .quote-decor-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      color: var(--color-gold-light);
+      font-size: 1.15rem;
+      user-select: none;
+    }
+    .quote-decor-top { margin-bottom: 1.2rem; }
+    .quote-decor-bottom { margin-top: 1.4rem; }
+
+    .quote-decor-line {
+      width: 45px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-gold-light), transparent);
+    }
+
+    .quote-sub-spark {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--color-gold-light);
+      margin-bottom: 1rem;
+      font-weight: 600;
     }
 
     .quote-main-title {
       font-family: var(--font-serif);
-      font-size: clamp(2.1rem, 7.5vw, 3rem);
+      font-size: clamp(2.2rem, 7.8vw, 3.1rem);
       font-weight: 700;
       line-height: 1.25;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      letter-spacing: 0.05em;
+      color: #FFFFFF;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.45), 0 0 20px rgba(223, 200, 136, 0.35);
+      margin-bottom: 0.8rem;
+    }
+
+    .quote-script-accent {
+      font-family: var(--font-calligraphy);
+      font-size: clamp(2rem, 6.5vw, 2.7rem);
+      color: var(--color-gold-light);
+      text-transform: none;
+      display: block;
+      margin-top: 0.4rem;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .quote-festive-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.1rem;
+      font-size: 1.4rem;
+      margin-top: 1.2rem;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
     }
 
     /* FOOTER */
@@ -1478,27 +1681,29 @@
       <p class="envelope-hint-top" id="guest-tag">Una invitación muy especial</p>
 
       <div class="envelope-container" id="envelope-container">
-        <!-- VISTA SOBRE CERRADO ACOLCHADO DE LA PÁGINA 1 -->
-        <img src="images/sobre-cerrado.png" alt="Sobre cerrado de boda" class="envelope-bg">
-
-        <!-- SOLAPA DEL SOBRE CON TEXTURAS REALES (FRENTE ACOLCHADO Y DORSO FORRADO) -->
+        <!-- SOLAPA DEL SOBRE ACOLCHADA -->
         <div class="envelope-flap" id="envelope-flap">
-          <div class="envelope-flap-face envelope-flap-front">
-            <img src="images/solapa-front.png" alt="Solapa acolchada cerrada">
-          </div>
-          <div class="envelope-flap-face envelope-flap-back">
-            <img src="images/solapa-back.png" alt="Interior solapa">
-          </div>
+          <div class="envelope-flap-face envelope-flap-front"></div>
+          <div class="envelope-flap-face envelope-flap-back"></div>
         </div>
 
-        <!-- SELLO DE CERA DORADO EN EL CENTRO (Z-INDEX SUPERIOR A LA SOLAPA CERRADA) -->
+        <!-- SELLO DE CERA DORADO EN EL CENTRO -->
         <button type="button" class="wax-seal-btn" id="wax-seal-btn" aria-label="Pulsa el sello para abrir la invitación">
           <img src="images/logo-boda.png" alt="Logo Paula y Agustín">
         </button>
 
-        <!-- TARJETÓN FORMAL DE LA PÁGINA 3 QUE EMERGE DEL SOBRE -->
+        <!-- TARJETÓN CON EFECTO GIRO 3D (FRONTAL CON BOLAS P&A Y TRASERA CON DETALLES Y QR) -->
         <div class="envelope-tarjeton-popup" id="envelope-tarjeton-popup">
-          <img src="images/tarjeta-formal.png" alt="Tarjeta formal de invitación Paula y Agustín">
+          <div class="tarjeton-flipper" id="tarjeton-flipper">
+            <!-- CARA FRONTAL (ANVERSO: GUIRNALDA BOLAS P Y A) -->
+            <div class="tarjeton-face tarjeton-front">
+              <img src="images/invitacion-frontal.jpg" alt="Invitación Paula y Agustín - Lo mejor de la Navidad es con quién se comparte">
+            </div>
+            <!-- CARA TRASERA (REVERSO: TARJETA FORMAL CON DETALLES Y QR) -->
+            <div class="tarjeton-face tarjeton-back">
+              <img src="images/tarjeta-formal.png" alt="Tarjeta formal de invitación Paula y Agustín con QR">
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1576,7 +1781,7 @@
       <div class="pearl-divider" style="margin-top:2.5rem;">● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●</div>
     </section>
 
-    <!-- DETALLES: CEREMONIA Y CELEBRACIÓN -->
+    <!-- DETALLES: CEREMONIA Y CELEBRACIÓN (FONDO BEIGE / CREAM ORIGINAL) -->
     <section class="section cream" id="details">
       <!-- Guirnalda de pino y piñas nevadas (100% transparente) -->
       <div class="garland-pine-top">
@@ -1651,7 +1856,7 @@
         </div>
 
         <div class="timeline-card">
-          <h4 class="timeline-title">Disponibilidad de autobús;</h4>
+          <h4 class="timeline-title">Disponibilidad de autobús</h4>
 
           <!-- Línea de tiempo Alzira -->
           <div class="route-block">
@@ -1704,6 +1909,11 @@
               </div>
             </div>
           </div>
+
+          <!-- Texto orientativo -->
+          <p class="transport-disclaimer">
+            ✦ Los horarios son orientativos, os facilitaremos los horarios definitivos más adelante.
+          </p>
         </div>
       </div>
     </section>
@@ -1728,26 +1938,26 @@
             <img src="images/guirnalda-bolas-fiesta.png" alt="Guirnalda navideña de fiesta">
           </div>
 
-          <!-- Invitados bailando -->
+          <!-- Invitados de fiesta celebrando temática mágica / Harry Potter -->
           <div class="guests-illustration">
-            <img src="images/invitados-baile.png" alt="Invitados de fiesta celebrando">
+            <img src="images/dresscode-hp-fiesta.jpg" alt="Invitados de fiesta celebrando con temática elegante y toques mágicos" style="border-radius:10px;border:1.5px solid var(--color-gold);">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FORMULARIO "¿NOS ACOMPAÑAS?" (FONDO CLARO/CREAM PARA MÁXIMO CONTRASTE DEL DIBUJO) -->
-    <section class="section cream" id="rsvp">
-      <!-- Guirnalda con bolas A y P sobre fondo claro: 100% visible y nítida -->
+    <!-- FORMULARIO "¿NOS ACOMPAÑAS?" (FONDO ROJO/GRANATE CON CONTRASTE PROTEGIDO PARA EL DISEÑO) -->
+    <section class="section red-gradient" id="rsvp">
+      <!-- Guirnalda con bolas A y P sobre fondo claro protegido: 100% visible y nítida -->
       <div class="rsvp-header-img">
         <img src="images/guirnalda-bolas-lazos.png" alt="Guirnalda con bolas A y P">
       </div>
 
       <h2 class="rsvp-title-big">¿Nos acompañas?</h2>
-      <p style="text-align:center;font-family:var(--font-sans);font-style:italic;font-size:1.05rem;color:var(--color-text);max-width:340px;margin:0.4rem auto 0;opacity:0.95;">
+      <p class="rsvp-subtitle">
         Nos haría mucha ilusión compartir este día contigo.
       </p>
-      <p style="text-align:center;font-family:var(--font-sans);font-size:0.78rem;color:var(--color-red);margin-top:0.4rem;font-weight:600;letter-spacing:0.04em;">
+      <p class="rsvp-note">
         Rellena una respuesta por cada asistente
       </p>
 
@@ -2045,15 +2255,44 @@
       </div>
     </section>
 
-    <!-- BANNER LEMA FINAL (FONDO ROJO/GRANATE CON DEGRADADO - PÁG 15) -->
+    <!-- BANNER LEMA FINAL (FONDO ROJO/GRANATE NAVIDEÑO & MÁGICO - PUNTO 8) -->
     <section class="quote-banner">
       <div class="quote-box-inner">
+        <div class="quote-decor-top">
+          <span class="quote-decor-line"></span>
+          <span>⚡</span>
+          <span>✦</span>
+          <span>❄</span>
+          <span>✦</span>
+          <span>⚡</span>
+          <span class="quote-decor-line"></span>
+        </div>
+
+        <p class="quote-sub-spark">12 · DICIEMBRE · 2026</p>
+
         <h2 class="quote-main-title">
-          LO MEJOR DE<br>
-          LA NAVIDAD ES<br>
-          CON QUIÉN SE<br>
-          COMPARTE
+          Lo mejor de<br>
+          la Navidad es
+          <span class="quote-script-accent">con quién se comparte</span>
         </h2>
+
+        <div class="quote-festive-icons" aria-hidden="true">
+          <span>🎄</span>
+          <span>✨</span>
+          <span>🎁</span>
+          <span>🕯️</span>
+          <span>🧦</span>
+          <span>🪄</span>
+          <span>⭐</span>
+        </div>
+
+        <div class="quote-decor-bottom">
+          <span class="quote-decor-line"></span>
+          <span>●</span>
+          <span>❄</span>
+          <span>●</span>
+          <span class="quote-decor-line"></span>
+        </div>
       </div>
     </section>
 
@@ -2325,15 +2564,22 @@
       // 3. Abrir la solapa del sobre (animación CSS)
       envelopeContainer.classList.add('flap-open');
 
-      // 4. Tras abrir la solapa, aparece el tarjetón
+      // 4. Tras abrir la solapa, emerge el tarjetón mostrando su cara frontal (anverso con foto/bolas)
       setTimeout(() => {
         envelopeContainer.classList.add('tarjeton-active');
       }, 400);
 
-      // 5. Ocultar hint de "Pulsa el sello", mostrar scroll hint y nav
-      envelopeOpenHint.style.display = 'none';
-      envelopeScreen.classList.add('opened');
-      floatingNav.classList.add('visible');
+      // 5. Tras unos segundos (2.8s), se gira suavemente en 3D mostrando el reverso (tarjetón formal con detalles y QR)
+      setTimeout(() => {
+        envelopeContainer.classList.add('tarjeton-flipped');
+      }, 3200);
+
+      // 6. Al terminar de girarse, mostramos la indicación de deslizar para continuar y la navegación
+      setTimeout(() => {
+        envelopeOpenHint.style.display = 'none';
+        envelopeScreen.classList.add('opened');
+        floatingNav.classList.add('visible');
+      }, 4400);
     }
 
     function dismissEnvelope() {
@@ -2378,14 +2624,13 @@
     /*
      * 5. RETORNO AL SOBRE INICIAL TRAS COMPLETAR ASISTENCIA
      */
-    document.getElementById('btn-return-envelope').addEventListener('click', () => {
+    function resetToEnvelope() {
       floatingNav.classList.remove('visible');
       envelopeScreen.classList.remove('dismissed');
       envelopeScreen.style.opacity = '1';
       envelopeScreen.style.transform = 'none';
       envelopeScreen.classList.remove('opened');
-      envelopeContainer.classList.remove('tarjeton-active');
-      envelopeContainer.classList.remove('flap-open');
+      envelopeContainer.classList.remove('tarjeton-active', 'tarjeton-flipped', 'flap-open');
       envelopeOpenHint.style.display = 'block';
       waxSealBtn.style.transform = '';
       waxSealBtn.style.opacity = '';
@@ -2400,7 +2645,9 @@
       selectedAttendance = null;
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    }
+
+    document.getElementById('btn-return-envelope').addEventListener('click', resetToEnvelope);
 
     /*
      * 6. CUENTA ATRÁS
@@ -2512,6 +2759,9 @@
       thanksBox.classList.add('visible');
       submitBtn.disabled = false;
       submitBtn.textContent = 'Enviar confirmación';
+
+      // Retorno automático e inmediato al sobre principal
+      resetToEnvelope();
     });
 
     /*
