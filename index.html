@@ -1036,10 +1036,11 @@
       width: min(78%, 280px);
       margin: 0 auto 1rem;
       background: rgba(251, 247, 240, 0.95);
-      padding: 0.9rem 1.1rem;
+      padding: 0 1.1rem 0.9rem; /* sin relleno arriba: la guirnalda toca el borde superior del marco */
       border-radius: 16px;
       border: 1.5px solid var(--color-gold-light);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
     }
     .rsvp-header-img img {
       width: 100%;
@@ -1381,9 +1382,11 @@
     }
 
     .gift-verse {
-      font-family: var(--font-calligraphy);
-      font-size: 1.75rem;
-      line-height: 1.7;
+      font-family: var(--font-script);
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.45rem;
+      line-height: 1.6;
       color: var(--color-cream);
       margin-bottom: 1.8rem;
     }
@@ -1460,29 +1463,25 @@
     /* ==========================================================================
        BANNER LEMA FINAL (FONDO ROJO/GRANATE NAVIDEÑO & MÁGICO - PUNTO 8)
        ========================================================================== */
+    /* Ilustración del lema (pág. 9 de correcciones) como tarjeta sobre el fondo rojo original */
     .quote-banner {
       background: radial-gradient(circle at 50% 25%, rgba(223, 200, 136, 0.35) 0%, transparent 60%),
                   radial-gradient(circle at 15% 85%, rgba(66, 84, 66, 0.5) 0%, transparent 50%),
                   linear-gradient(150deg, #9b1e1e 0%, #681010 50%, #3e0707 100%);
-      color: #FFFFFF;
-      padding: 6rem 1.5rem;
+      padding: 5rem 1.2rem;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
 
-    /* Fondo de estrellas mágicas sutiles */
-    .quote-banner::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background-image: 
-        radial-gradient(circle, rgba(255, 235, 170, 0.8) 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(255, 255, 255, 0.6) 1.5px, transparent 2px);
-      background-size: 65px 65px, 110px 110px;
-      background-position: 10px 20px, 45px 60px;
-      opacity: 0.55;
+    .quote-illustration {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 14px;
+      border: 2px solid var(--color-gold);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
 
     .quote-box-inner {
@@ -1697,11 +1696,11 @@
           <div class="tarjeton-flipper" id="tarjeton-flipper">
             <!-- CARA FRONTAL (ANVERSO: GUIRNALDA BOLAS P Y A) -->
             <div class="tarjeton-face tarjeton-front">
-              <img src="images/invitacion-frontal.jpg" alt="Invitación Paula y Agustín - Lo mejor de la Navidad es con quién se comparte">
+              <img src="images/postal-delantera.jpg" alt="Invitación Paula y Agustín - Lo mejor de la Navidad es con quién se comparte">
             </div>
             <!-- CARA TRASERA (REVERSO: TARJETA FORMAL CON DETALLES Y QR) -->
             <div class="tarjeton-face tarjeton-back">
-              <img src="images/tarjeta-formal.png" alt="Tarjeta formal de invitación Paula y Agustín con QR">
+              <img src="images/postal-trasera.jpg" alt="Tarjeta formal de invitación Paula y Agustín con QR">
             </div>
           </div>
         </div>
@@ -1729,7 +1728,6 @@
         <img src="images/guirnalda-bolas-lazos.png" alt="Adorno navideño bolas A y P">
       </div>
 
-      <p class="hero-kicker">¡Nos casamos!</p>
       <h1 class="hero-title">Agustín y Paula</h1>
 
       <div class="hero-photo-wrap">
@@ -1737,7 +1735,7 @@
       </div>
 
       <div class="festive-divider">
-        <span class="line"></span><span>✦</span><span>●</span><span>❄</span><span class="line"></span>
+        <span class="line"></span><span>✦</span><span>●</span><span>✦</span><span class="line"></span>
       </div>
 
       <p class="hero-date">12 de diciembre de 2026</p>
@@ -1747,7 +1745,7 @@
 
     <!-- MENSAJE Y CUENTA ATRÁS (FONDO VERDE CON DEGRADADO) -->
     <section class="section green-gradient">
-      <div class="pearl-divider">● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●</div>
+      <div class="pearl-divider">● ● ● ● ● ● ● ● ● ● ● ● ● ● ●</div>
       
       <p class="welcome-text">
         Y nos hace especial ilusión poder compartir este día con vosotros. En esta página encontraréis todos los detalles necesarios para acompañarnos.<br><br>
@@ -1756,7 +1754,7 @@
 
       <p class="section-kicker">CUENTA ATRÁS</p>
       <div class="festive-divider">
-        <span class="line"></span><span>✦</span><span>●</span><span>❄</span><span class="line"></span>
+        <span class="line"></span><span>✦</span><span>●</span><span>✦</span><span class="line"></span>
       </div>
 
       <div class="countdown-grid" id="countdown">
@@ -1778,7 +1776,7 @@
         </div>
       </div>
 
-      <div class="pearl-divider" style="margin-top:2.5rem;">● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●</div>
+      <div class="pearl-divider" style="margin-top:2.5rem;">● ● ● ● ● ● ● ● ● ● ● ● ● ● ●</div>
     </section>
 
     <!-- DETALLES: CEREMONIA Y CELEBRACIÓN (FONDO BEIGE / CREAM ORIGINAL) -->
@@ -1790,7 +1788,7 @@
 
       <p class="section-kicker">DETALLES</p>
       <div class="festive-divider">
-        <span class="line"></span><span>✦</span><span>●</span><span>❄</span><span class="line"></span>
+        <span class="line"></span><span>✦</span><span>●</span><span>✦</span><span class="line"></span>
       </div>
 
       <div class="container-sm">
@@ -1847,14 +1845,10 @@
 
       <p class="section-kicker">TRASLADOS</p>
       <div class="festive-divider">
-        <span class="line"></span><span>❄</span><span>●</span><span>✦</span><span class="line"></span>
+        <span class="line"></span><span>✦</span><span>●</span><span>✦</span><span class="line"></span>
       </div>
 
       <div class="container-sm">
-        <div class="bus-illustration">
-          <img src="images/autobus.png" alt="Autobús para invitados">
-        </div>
-
         <div class="timeline-card">
           <h4 class="timeline-title">Disponibilidad de autobús</h4>
 
@@ -1924,23 +1918,18 @@
         <div class="dresscode-box">
           <p class="dresscode-title">DRESS CODE</p>
           <div class="festive-divider" style="margin-bottom:1rem;">
-            <span class="line"></span><span>✦</span><span>●</span><span>❄</span><span class="line"></span>
+            <span class="line"></span><span>✦</span><span>●</span><span>✦</span><span class="line"></span>
           </div>
 
           <p class="dresscode-message">
             No olvides traer zapato cómodo para la fiesta, ¡vamos a darlo todo!
           </p>
 
-          <div class="pearl-divider" style="margin:0.8rem 0;">● ● ● ● ● ● ● ● ● ● ● ● ● ● ●</div>
+          <div class="pearl-divider" style="margin:0.8rem 0;">● ● ● ● ● ● ● ● ●</div>
 
-          <!-- Guirnalda festiva con bolas navideñas -->
-          <div class="garland-party-balls">
-            <img src="images/guirnalda-bolas-fiesta.png" alt="Guirnalda navideña de fiesta">
-          </div>
-
-          <!-- Invitados de fiesta celebrando temática mágica / Harry Potter -->
+          <!-- Zapatillas rojas con lazos (acuarela navideña) -->
           <div class="guests-illustration">
-            <img src="images/dresscode-hp-fiesta.jpg" alt="Invitados de fiesta celebrando con temática elegante y toques mágicos" style="border-radius:10px;border:1.5px solid var(--color-gold);">
+            <img src="images/dresscode-converse.webp" alt="Zapatillas rojas de lona colgadas por cintas, con acebo, pino nevado y un cascabel" style="border-radius:10px;border:1.5px solid var(--color-gold);">
           </div>
         </div>
       </div>
@@ -1987,49 +1976,36 @@
                   <input class="input-field" id="allergies" placeholder="Opcional (celiaquía, etc.)">
                 </div>
                 <div class="form-group">
-                  <label for="childMenu">Menú infantil</label>
-                  <input class="input-field" id="childMenu" placeholder="Edad aproximada si aplica">
-                </div>
-                <div class="form-group">
                   <label for="specialNeeds">Otras necesidades</label>
-                  <input class="input-field" id="specialNeeds" placeholder="Ej. trona, accesibilidad...">
+                  <input class="input-field" id="specialNeeds" placeholder="Ej. trona, menú infantil, accesibilidad...">
                 </div>
 
-                <!-- AUTOBÚS / TAXI: CHECKBOXES 100% OPERATIVOS -->
+                <!-- AUTOBÚS: CHECKBOXES -->
                 <fieldset class="transport-fieldset">
-                  <legend>Autobús / Taxi</legend>
+                  <legend>Autobús</legend>
                   <p style="font-size:0.75rem;color:rgba(40,34,29,0.7);margin-bottom:0.4rem;font-style:italic;">
                     Puedes marcar varias opciones para ida, vuelta o ambas.
                   </p>
                   <label class="check-option">
-                    <input type="checkbox" name="bus" value="11:00h Alzira -> Ceremonia">
-                    <span>11:00h Alzira → Ceremonia (Ida)</span>
+                    <input type="checkbox" name="bus" value="Alzira -> Ceremonia">
+                    <span>Alzira → Ceremonia (Ida)</span>
                   </label>
                   <label class="check-option">
-                    <input type="checkbox" name="bus" value="11:15h Cullera -> Ceremonia">
-                    <span>11:15h Cullera → Ceremonia (Ida)</span>
+                    <input type="checkbox" name="bus" value="Cullera -> Ceremonia">
+                    <span>Cullera → Ceremonia (Ida)</span>
                   </label>
                   <label class="check-option">
-                    <input type="checkbox" name="bus" value="13:00h Ceremonia -> Celebracion">
-                    <span>13:00h Ceremonia → Celebración (Traslado)</span>
+                    <input type="checkbox" name="bus" value="Ceremonia -> Celebracion">
+                    <span>Ceremonia → Celebración (Traslado)</span>
                   </label>
                   <label class="check-option">
-                    <input type="checkbox" name="bus" value="00:00h Celebracion -> Alzira">
-                    <span>00:00h Celebración → Alzira (Vuelta)</span>
+                    <input type="checkbox" name="bus" value="Celebracion -> Alzira">
+                    <span>Celebración → Alzira (Vuelta)</span>
                   </label>
                   <label class="check-option">
-                    <input type="checkbox" name="bus" value="00:00h Celebracion -> Cullera">
-                    <span>00:00h Celebración → Cullera (Vuelta)</span>
+                    <input type="checkbox" name="bus" value="Celebracion -> Cullera">
+                    <span>Celebración → Cullera (Vuelta)</span>
                   </label>
-                  <label class="check-option">
-                    <input type="checkbox" name="bus" value="Taxi">
-                    <span>Necesitaré taxi</span>
-                  </label>
-
-                  <div class="form-group" style="margin-top:0.4rem;">
-                    <label for="taxiTime" style="font-size:0.75rem !important;">Hora aproximada de taxi (si aplica)</label>
-                    <input class="input-field" id="taxiTime" placeholder="Opcional">
-                  </div>
                 </fieldset>
               </div>
 
@@ -2042,7 +2018,7 @@
             </div>
           </form>
 
-          <!-- Pantalla de confirmación y botón para volver al sobre inicial -->
+          <!-- Pantalla de confirmación: seguir navegando o añadir otro asistente -->
           <div class="thanks-box" id="thanks-box">
             <div class="thanks-icon">🎄</div>
             <h3 class="thanks-title" id="thanks-title">¡Gracias!</h3>
@@ -2051,8 +2027,8 @@
             </p>
 
             <div>
-              <button type="button" class="btn-return-envelope" id="btn-return-envelope">
-                <span>✉️</span> Volver al sobre inicial
+              <button type="button" class="btn-return-envelope" id="btn-add-guest">
+                <span>➕</span> Añadir otro asistente
               </button>
             </div>
           </div>
@@ -2069,7 +2045,7 @@
 
       <p class="section-kicker">¿DÓNDE ALOJARSE?</p>
       <div class="festive-divider">
-        <span class="line"></span><span>❄</span><span>●</span><span>✦</span><span class="line"></span>
+        <span class="line"></span><span>✦</span><span>●</span><span>✦</span><span class="line"></span>
       </div>
 
       <p style="text-align:center;font-family:var(--font-sans);font-style:italic;font-size:1.15rem;color:var(--color-text);margin-bottom:2.2rem;">
@@ -2170,7 +2146,7 @@
 
           <p class="section-kicker" style="margin-top:0.4rem; color:var(--color-gold-light);">LISTA DE BODAS</p>
           <div class="festive-divider">
-            <span class="line"></span><span>✦</span><span>●</span><span>❄</span><span class="line"></span>
+            <span class="line"></span><span>✦</span><span>●</span><span>✦</span><span class="line"></span>
           </div>
 
           <p class="gift-intro">Para esta Navidad, sólo queremos;</p>
@@ -2199,7 +2175,7 @@
     <section class="section cream" style="background-color: var(--color-cream-alt);">
       <p class="section-kicker">INFORMACIÓN ÚTIL</p>
       <div class="festive-divider">
-        <span class="line"></span><span>❄</span><span>●</span><span>✦</span><span class="line"></span>
+        <span class="line"></span><span>✦</span><span>●</span><span>✦</span><span class="line"></span>
       </div>
 
       <div class="container-sm">
@@ -2257,43 +2233,7 @@
 
     <!-- BANNER LEMA FINAL (FONDO ROJO/GRANATE NAVIDEÑO & MÁGICO - PUNTO 8) -->
     <section class="quote-banner">
-      <div class="quote-box-inner">
-        <div class="quote-decor-top">
-          <span class="quote-decor-line"></span>
-          <span>⚡</span>
-          <span>✦</span>
-          <span>❄</span>
-          <span>✦</span>
-          <span>⚡</span>
-          <span class="quote-decor-line"></span>
-        </div>
-
-        <p class="quote-sub-spark">12 · DICIEMBRE · 2026</p>
-
-        <h2 class="quote-main-title">
-          Lo mejor de<br>
-          la Navidad es
-          <span class="quote-script-accent">con quién se comparte</span>
-        </h2>
-
-        <div class="quote-festive-icons" aria-hidden="true">
-          <span>🎄</span>
-          <span>✨</span>
-          <span>🎁</span>
-          <span>🕯️</span>
-          <span>🧦</span>
-          <span>🪄</span>
-          <span>⭐</span>
-        </div>
-
-        <div class="quote-decor-bottom">
-          <span class="quote-decor-line"></span>
-          <span>●</span>
-          <span>❄</span>
-          <span>●</span>
-          <span class="quote-decor-line"></span>
-        </div>
-      </div>
+      <img class="quote-illustration" src="images/lema-navidad.png" alt="Lo mejor de la Navidad es con quién se comparte">
     </section>
 
     <!-- FOOTER -->
@@ -2319,7 +2259,7 @@
   </div>
 
   <!-- CONTROL DE MÚSICA -->
-  <button type="button" id="music-btn" aria-label="Música de boda (Harry Potter)">
+  <button type="button" id="music-btn" aria-label="Música de fondo: Somewhere in My Memory">
     <span class="ring"></span>
     <span id="music-icon">▶</span>
   </button>
@@ -2446,6 +2386,9 @@
       osc2.stop(now + 2.5);
     }
 
+    const MUSIC_VOLUME = 0.22; // 0 = silencio, 1 = volumen original
+    let bgAudioVolumeSet = false;
+
     function startHarryPotterMusic() {
       if (!audioCtx) {
         const AudioContextClass = window.AudioContext || window.webkitAudioContext;
@@ -2456,6 +2399,21 @@
       }
 
       const bgAudio = document.getElementById('bg-audio');
+
+      // Volumen bajo, como música de fondo. iOS ignora audio.volume, por eso se baja con un GainNode
+      if (bgAudio && !bgAudioVolumeSet) {
+        bgAudioVolumeSet = true;
+        if (audioCtx) {
+          const source = audioCtx.createMediaElementSource(bgAudio);
+          const gain = audioCtx.createGain();
+          gain.gain.value = MUSIC_VOLUME;
+          source.connect(gain);
+          gain.connect(audioCtx.destination);
+        } else {
+          bgAudio.volume = MUSIC_VOLUME;
+        }
+      }
+
       if (bgAudio && bgAudio.currentSrc) {
         bgAudio.play().then(() => {
           updateMusicButtonUI(true);
@@ -2622,32 +2580,19 @@
     waxSealBtn.addEventListener('click', openEnvelope);
 
     /*
-     * 5. RETORNO AL SOBRE INICIAL TRAS COMPLETAR ASISTENCIA
+     * 5. AÑADIR OTRO ASISTENTE TRAS ENVIAR (SIN SALIR DE LA SECCIÓN)
      */
-    function resetToEnvelope() {
-      floatingNav.classList.remove('visible');
-      envelopeScreen.classList.remove('dismissed');
-      envelopeScreen.style.opacity = '1';
-      envelopeScreen.style.transform = 'none';
-      envelopeScreen.classList.remove('opened');
-      envelopeContainer.classList.remove('tarjeton-active', 'tarjeton-flipped', 'flap-open');
-      envelopeOpenHint.style.display = 'block';
-      waxSealBtn.style.transform = '';
-      waxSealBtn.style.opacity = '';
-      isEnvelopeOpen = false;
-
-      // Resetear formulario
-      document.getElementById('rsvp-form').reset();
-      document.getElementById('rsvp-form').style.display = 'block';
+    document.getElementById('btn-add-guest').addEventListener('click', () => {
+      const form = document.getElementById('rsvp-form');
+      form.reset();
+      form.style.display = 'block';
       document.getElementById('thanks-box').classList.remove('visible');
       document.getElementById('rsvp-fields').classList.remove('visible');
       document.querySelectorAll('.attend-btn').forEach(b => b.classList.remove('active'));
       selectedAttendance = null;
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    document.getElementById('btn-return-envelope').addEventListener('click', resetToEnvelope);
+      document.querySelector('#rsvp .rsvp-box').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
 
     /*
      * 6. CUENTA ATRÁS
@@ -2717,10 +2662,8 @@
         lastName,
         comments: document.getElementById('comments').value.trim(),
         allergies: selectedAttendance === 'yes' ? document.getElementById('allergies').value.trim() : '',
-        childMenu: selectedAttendance === 'yes' ? document.getElementById('childMenu').value.trim() : '',
         specialNeeds: selectedAttendance === 'yes' ? document.getElementById('specialNeeds').value.trim() : '',
-        transport: selectedAttendance === 'yes' ? buses : [],
-        taxiTime: selectedAttendance === 'yes' ? document.getElementById('taxiTime').value.trim() : ''
+        transport: selectedAttendance === 'yes' ? buses : []
       };
 
       try {
@@ -2760,8 +2703,8 @@
       submitBtn.disabled = false;
       submitBtn.textContent = 'Enviar confirmación';
 
-      // Retorno automático e inmediato al sobre principal
-      resetToEnvelope();
+      // Se queda en la sección: el formulario se oculta y mostramos el agradecimiento donde estaba
+      thanksBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
 
     /*
